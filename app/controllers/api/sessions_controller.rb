@@ -1,5 +1,6 @@
 class Api::SessionsController < ApplicationController
   def create
+    # unnecessary because logic to check for user on username or email is in user.rb
     # if params[:user][:username]
     #   login_credential = params[:user][:username]
     # elsif params[:user][:email]
@@ -15,7 +16,7 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      render json: ["Invalid username/password combination"], status: 401
+      render json: ["Invalid username/password or email/password combination"], status: 401
     end
   end
 
