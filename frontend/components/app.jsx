@@ -4,8 +4,8 @@ import Modal from './modal/modal'
 
 const App = () => (
   <div>
-    <Modal />
     <Header />
+    <Modal />
     {/* <Layout /> */}
     {/* <Footer /> */}
   </div>

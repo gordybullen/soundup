@@ -1,8 +1,8 @@
-import React from 'React';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
     this.state = this.props.emptyUser;
     this.handleSubmit = this.handleSubmit.bind(this);
