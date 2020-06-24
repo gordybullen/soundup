@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from './header/header';
+import Modal from './modal/modal'
 
 const App = () => (
   <div>
-    {/* <h1>SoundUp</h1> */}
+    <Modal />
     <Header />
     {/* <Layout /> */}
     {/* <Footer /> */}
