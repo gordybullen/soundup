@@ -6,12 +6,10 @@ class Api::SessionsController < ApplicationController
     # elsif params[:user][:email]
     #   login_credential = params[:user][:email]
     # end
-
     @user = User.find_by_credentials(
       params[:user][:login_credential],
       params[:user][:password]
     )
-
     if @user
       login(@user)
       render "api/users/show"

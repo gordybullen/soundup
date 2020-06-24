@@ -1,0 +1,80 @@
+body {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 0;
+  padding:0px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #333;
+  align-items: center;
+  width: 100%;
+  font: 100 14px/1.5 Interstate,Lucida Grande,Arial,sans-serif;
+  height: 10px;
+  transition: height .2s ease-in-out;
+}
+
+.nav-bar-left > .nav-bar-button {
+  display: inline-block;
+  position: relative;
+  height: 26px;
+  margin: 0;
+  padding: 2px 22px 2px 20px;
+  border-right: 1px solid #666;
+  border-left: 1px solid #666;
+  // border-radius: 3px;
+  background-color: #333;
+  cursor: pointer;
+  color: #999;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.nav-bar-right > .nav-bar-button {
+  display: inline-block;
+  position: relative;
+  height: 26px;
+  margin: 0;
+  padding: 2px 11px 2px 10px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  background-color: #333;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+#nav-btn-create {
+  background-color: orangered;
+}
+
+#nav-btn-signin:hover {
+  border-color: whitesmoke;
+}
+
+.nav-bar-left > .nav-bar-button:hover {
+  color: whitesmoke;
+}
+
+#nav-bar-search {
+  margin-left: 10%;
+  width: 30%;
+}
