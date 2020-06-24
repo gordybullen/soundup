@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
   return {
@@ -10,23 +11,36 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  openModal: modal => dispatch(openModal(modal))
 });
 
-const Header = ({ currentUser, logout }) => {
+const Header = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <>
-      <Link
+      <button 
+      onClick={() => openModal('Sign in')}
+      className="nav-bar-button"
+      id="nav-bar-btn-signin"
+      >Sign in
+      </button>
+      {/* <Link
         className="nav-bar-button"
         id="nav-bar-btn-signin"
         to="/login">Sign in
-      </Link>
+      </Link> */}
 
-      <Link
+      <button 
+      onClick={() => openModal('Create Account')}
+      className="nav-bar-button"
+      id="nav-bar-btn-create"
+      >Create Account
+      </button>
+      {/* <Link
         className="nav-bar-button"
         id="nav-bar-btn-create"
         to="/signup">Create Account
-      </Link>
+      </Link> */}
     </>
   );
 
