@@ -25,11 +25,9 @@ function Modal({ modal, closeModal }) {
   switch (modal) {
     case 'Sign in':
       component = <LoginFormContainer />;
-      // component = <h1>LoginFormContainer</h1>
       break;
     case 'Create Account':
       component = <SignupFormContainer />;
-      // component = <h1>SignupFormContainer</h1>
       break;
     default:
       return null;
