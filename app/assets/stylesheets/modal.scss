@@ -1,19 +1,18 @@
 .modal-background {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: hsla(0,0%,94.9%,.9);
   z-index: 1;
 
   .modal-child {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin: 76px 0 30px;
+    padding: 25px;
     height: 500px;
     width: 450px;
     background-color: #ffffff;
