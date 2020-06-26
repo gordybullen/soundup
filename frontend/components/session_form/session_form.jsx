@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
             className="close-modal"
             type="button"
             onClick={this.props.closeModal}>
-            <i className="fa fa-times" aria-hidden="true"></i>
+            <i className="fa fa-times" style={{ color: "#ccc" }} aria-hidden="true"></i>
           </button>
         </div>
 
@@ -86,8 +86,8 @@ class SessionForm extends React.Component {
 
           <div className="login-form-welcome">Welcome to SoundUp!</div>
 
-          <div className="login-form-other-form">
-            Please {this.props.formType} or {this.props.otherForm}
+          <div className="login-form-message">
+            Please {this.props.formType}
           </div>
         </div>
         
@@ -121,6 +121,10 @@ class SessionForm extends React.Component {
               onClick={this.demoUser}
               type="button">Demo user
             </button>
+
+            <div className="other-form">
+              {this.props.otherForm}
+            </div>
           </div>
         </div>
       </form>
@@ -135,15 +139,15 @@ class SessionForm extends React.Component {
             className="close-modal"
             type="button"
             onClick={this.props.closeModal}>
-              <i className="fa fa-times" aria-hidden="true"></i>
-            </button>
+            <i className="fa fa-times" style={{color: "#ccc"}} aria-hidden="true"></i>
+          </button>
         </div>
 
         <div className="login-form-content-top">
           <div className="login-form-welcome">Welcome to SoundUp!</div>
 
-          <div className="login-form-other-form">
-            Please {this.props.formType} or {this.props.otherForm}
+          <div className="login-form-message">
+            Please {this.props.formType}
           </div>
 
         </div> 
@@ -176,6 +180,10 @@ class SessionForm extends React.Component {
             />
 
             <input className="session-submit" type="submit" value={this.props.formType} />
+
+            <div className="other-form">
+              {this.props.otherForm}
+            </div>
           </div>
         </div>
       </form>

@@ -18,6 +18,7 @@ const App = () => (
     {/* <Footer /> */}
     <Switch>
       <ProtectedRoute exact path="/upload" component={Modal} />
+      <Redirect to="/" />
     </Switch>
   </div>
 );
