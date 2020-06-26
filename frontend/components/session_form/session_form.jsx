@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
     super(props);
     this.state = this.props.emptyUser;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoUser = this.demoUser.bind(this);
   }
 
   update(field) {
@@ -14,10 +15,48 @@ class SessionForm extends React.Component {
     });
   };
 
+  demoUser(e) {
+    e.preventDefault();
+
+    const demoUser = {
+      login_credential: "DemoUser",
+      password: "password"
+    };
+
+    const speed = 100;
+
+    if (this.state.login_credential !== demoUser.login_credential) {
+      const inputUsername = setInterval(() => {
+        if (this.state.login_credential !== demoUser.login_credential) {
+          const temp = demoUser.login_credential.slice(0, this.state.login_credential.length + 1);
+          this.setState({ login_credential: temp });
+        } else {
+          clearInterval(inputUsername);
+          animatePassword()
+        }
+      }, speed);
+    };
+
+    const animatePassword = () => {
+      if (this.state.password !== demoUser.password) {
+        const inputPassword = setInterval(() => {
+          if (this.state.password !== demoUser.password) {
+            const temp = demoUser.password.slice(0, this.state.password.length + 1);
+            this.setState({ password: temp });
+          } else {
+            clearInterval(inputPassword);
+            this.props.processForm(demoUser);
+          }
+        }, speed);
+      };
+    };
+  };
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    this.props.processForm(user)
+      .then(this.props.closeModal);
   };
 
   renderErrors() {
@@ -51,6 +90,11 @@ class SessionForm extends React.Component {
         
         <div className="login-form-content-bottom">
           <div className="login-form">
+            <button
+              className="login-input-demo"
+              onClick={this.demoUser}>Demo user
+            </button>
+
             <input type="text"
                 value={this.state.login_credential}
                 onChange={this.update('login_credential')}
