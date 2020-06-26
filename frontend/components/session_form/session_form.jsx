@@ -24,7 +24,6 @@ class SessionForm extends React.Component {
     };
 
     const speed = 100;
-
     if (this.state.login_credential !== demoUser.login_credential) {
       const inputUsername = setInterval(() => {
         if (this.state.login_credential !== demoUser.login_credential) {
@@ -45,7 +44,7 @@ class SessionForm extends React.Component {
             this.setState({ password: temp });
           } else {
             clearInterval(inputPassword);
-            this.props.processForm(demoUser);
+            this.handleSubmit();
           }
         }, speed);
       };
@@ -53,7 +52,7 @@ class SessionForm extends React.Component {
   };
 
   handleSubmit(e) {
-    e.preventDefault();
+    e ? e.preventDefault() : '';
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
       .then(this.props.closeModal);
@@ -61,44 +60,48 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <>
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>
         ))}
-      </ul>
+      </>
     );
   };
 
   loginForm() {
     return (
       <form onSubmit={this.handleSubmit} className="login-form-content">
+        <div className="close-modal-container">
+          <button
+            className="close-modal"
+            type="button"
+            onClick={this.props.closeModal}>
+            <i className="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+
         <div className="login-form-content-top">
-          <div className="close-container">
-            <button onClick={this.props.closeModal} className="close-modal">X</button>
-          </div>
 
           <div className="login-form-welcome">Welcome to SoundUp!</div>
 
           <div className="login-form-other-form">
             Please {this.props.formType} or {this.props.otherForm}
           </div>
-
-          {this.renderErrors()}
         </div>
         
         <div className="login-form-content-bottom">
           <div className="login-form">
-            <button
-              className="login-input-demo"
-              onClick={this.demoUser}>Demo user
-            </button>
+            <ul className="session-form-errors">
+              {this.renderErrors()}
+            </ul>
 
             <input type="text"
                 value={this.state.login_credential}
                 onChange={this.update('login_credential')}
                 className="login-input"
+                id="login-input-credential"
                 placeholder="Your email address or username"
               />
 
@@ -109,7 +112,15 @@ class SessionForm extends React.Component {
                 placeholder="Your password"
               />
 
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <button className="session-submit" type="submit">
+              {this.props.formType}
+            </button>
+
+            <button
+              className="login-input-demo"
+              onClick={this.demoUser}
+              type="button">Demo user
+            </button>
           </div>
         </div>
       </form>
@@ -119,22 +130,29 @@ class SessionForm extends React.Component {
   signupForm() {
     return (
       <form onSubmit={this.handleSubmit} className="login-form-content">
-        <div className="login-form-content-top">
-          <div className="close-container">
-            <button onClick={this.props.closeModal} className="close-modal">X</button>
-          </div>
+        <div className="close-modal-container">
+          <button
+            className="close-modal"
+            type="button"
+            onClick={this.props.closeModal}>
+              <i className="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
 
+        <div className="login-form-content-top">
           <div className="login-form-welcome">Welcome to SoundUp!</div>
 
           <div className="login-form-other-form">
             Please {this.props.formType} or {this.props.otherForm}
           </div>
 
-          {this.renderErrors()}
         </div> 
 
         <div className="login-form-content-bottom">
           <div className="login-form">
+            <ul className="session-form-errors">
+              {this.renderErrors()}
+            </ul>
 
             <input type="text"
                   value={this.state.username}

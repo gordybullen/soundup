@@ -12,6 +12,28 @@
     height: 100%;
     width: 100%;
 
+    .close-modal-container {
+      display: flex;
+      justify-content: flex-end;
+      width: 112%;
+      margin-bottom: 15px;
+      margin-top: 5px;
+      margin-right: 5px;
+      // border: 1px solid red;
+
+      .close-modal {
+        // position: absolute;
+        cursor: pointer;
+        font: $font;
+        background-color: #ffffff;
+        color: $nav-bar-color;
+        border: none;
+        font-size: 18px;
+        font-weight: 10;
+        // border: 1px solid red;
+      }
+    }
+
     .login-form-content-top {
       flex: 1;
       display: flex;
@@ -19,28 +41,6 @@
       justify-content: flex-start;
       align-items: center;
       width: 100%;
-
-      .close-container {
-        display: flex;
-        justify-content: flex-end;
-        width: 112%;
-        margin-bottom: 15px;
-        margin-top: 5px;
-        margin-right: 5px;
-        // border: 1px solid red;
-  
-        .close-modal {
-          // position: absolute;
-          cursor: pointer;
-          font: $font;
-          background-color: #ffffff;
-          color: $nav-bar-color;
-          border: none;
-          font-size: 18px;
-          font-weight: 10;
-          // border: 1px solid red;
-        }
-      }
 
       .login-form-welcome {
         width: 100%;
@@ -75,11 +75,17 @@
     }
 
     .login-form-content-bottom {
-      flex: 2;
+      flex: 3;
       display: flex;
-      // justify-content: center;
       align-items: flex-start;
       width: 100%;
+
+      .session-form-errors {
+        font-family: $font;
+        font-size: 13.69px;
+        margin-bottom: 15px;
+        height: 13.69px;
+      }
 
       .login-form {
         width: 100%;

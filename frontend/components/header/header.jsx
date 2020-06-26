@@ -58,11 +58,12 @@ const Header = ({ currentUser, logout, openModal }) => {
         to={`/users/${currentUser.id}`}>{currentUser.username}
       </Link>
 
-      <button
+      <Link
         className="nav-bar-link"
         id="nav-bar-btn-signout"
-        onClick={logout}>Sign out
-      </button>
+        onClick={logout}
+        to="/">Sign out
+      </Link>
     </>
   );
 
