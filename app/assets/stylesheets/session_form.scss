@@ -53,9 +53,10 @@
         color: $nav-bar-color;
         border-radius: 5px;
         font-weight: 100;
-        height: 24px;
+        // height: 24px;
         padding: 7px 8px;
         // border: 1px solid #ccc;
+        text-shadow: 2px 2px 8px $orange;
       }
 
       .login-form-message {
@@ -63,7 +64,6 @@
         font-family: $font;
       }
     }
-
 
     .login-form-content-bottom {
       flex: 3;
@@ -75,10 +75,12 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         font-family: $font;
         font-size: 13.69px;
         margin-bottom: 15px;
         height: 41.07px;
+        color: red;
       }
 
       .login-form {
@@ -105,6 +107,7 @@
           background-color: $orange;
           cursor: pointer;
           color: white;
+          
         }
       }
 
