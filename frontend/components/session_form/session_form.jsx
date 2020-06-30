@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
             className="close-modal"
             type="button"
             onClick={this.props.closeModal}>
-            <i className="fa fa-times" style={{ color: "#ccc" }} aria-hidden="true"></i>
+            {/* <i className="fa fa-times" style={{ color: "#ccc" }} aria-hidden="true"></i> */}
           </button>
         </div>
 
@@ -139,7 +139,7 @@ class SessionForm extends React.Component {
             className="close-modal"
             type="button"
             onClick={this.props.closeModal}>
-            <i className="fa fa-times" style={{color: "#ccc"}} aria-hidden="true"></i>
+            {/* <i className="fa fa-times" style={{color: "#ccc"}} aria-hidden="true"></i> */}
           </button>
         </div>
 

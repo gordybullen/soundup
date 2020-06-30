@@ -1,4 +1,6 @@
 class Api::TracksController < ApplicationController
+  before_action :require_login, only: [:create, :update, :destroy]
+  
   def create
     @track = Track.new(track_params)
 
