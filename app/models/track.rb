@@ -7,12 +7,13 @@
 #  title       :string           not null
 #  genre       :string
 #  duration    :integer          not null
+#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  description :text
 #
 class Track < ApplicationRecord
   validates :user_id, :title, :duration, presence: true
 
-  has_one_connected :track
+  has_one_attached :audio_file
+  has_one_attached :image
 end
