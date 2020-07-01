@@ -18,6 +18,7 @@ const mDTP = dispatch => {
 class TrackForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       userId: this.props.currentUser.id,
       title: "",
@@ -28,18 +29,25 @@ class TrackForm extends React.Component {
       imageFile: null,
       imageUrl:""
     };
+
+    this.handleFile = this.handleFile.bind(this);
+  };
+
+  handleFile(e) {
+    this.setState({audioFile: e.currentTarget.files[0]});
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="track-form-container">
         <div className="track-form-content">
           <form className="track-form">
             <div className="track-form-message">
-              Drag and drop your tracks here
+              Drag and drop your track here
             </div>
-
-            
+            <input type="file" 
+              onChange={this.handleFile}/>
           </form>
         </div>
       </div>
