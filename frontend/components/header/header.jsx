@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
+import { MODALS } from '../../shared/constants';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
   return {
@@ -15,32 +16,33 @@ const mapDispatchToProps = dispatch => ({
   openModal: modal => dispatch(openModal(modal))
 });
 
+// const TestComponent = ({ children }) => {
+//   return (
+//     <div style={{color: 'white'}}>
+//       I have children
+//       <div>
+//         {children}
+//       </div>
+//     </div>
+//   )
+// };
+
 const Header = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <>
       <button 
-      onClick={() => openModal('Sign in')}
+      onClick={() => openModal(MODALS.SIGN_IN)}
       className="nav-bar-button"
       id="nav-bar-btn-signin"
       >Sign in
       </button>
-      {/* <Link
-        className="nav-bar-button"
-        id="nav-bar-btn-signin"
-        to="/login">Sign in
-      </Link> */}
 
       <button 
-      onClick={() => openModal('Create Account')}
+      onClick={() => openModal(MODALS.CREATE_ACCOUNT)}
       className="nav-bar-button"
       id="nav-bar-btn-create"
       >Create Account
       </button>
-      {/* <Link
-        className="nav-bar-button"
-        id="nav-bar-btn-create"
-        to="/signup">Create Account
-      </Link> */}
     </>
   );
 
@@ -72,6 +74,14 @@ const Header = ({ currentUser, logout, openModal }) => {
 
   return (
     <nav className="nav-bar">
+      {/* <TestComponent>
+        <div style={{ color: 'white' }}>
+          Hi, I'm a child.
+        </div>
+      </TestComponent>
+      <TestComponent>
+        <input type="text" name="" id=""/>
+      </TestComponent> */}
       <div className="nav-bar-content">
         <div className="nav-bar-left">
           <a href="#" className="nav-bar-icon">SoundUp</a>

@@ -1,0 +1,16 @@
+@import 'variables';
+
+.layout-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: $gray;
+
+  .layout-content {
+    width: 100%;
+    max-width: $max-content-width;
+    height: 100%;
+    background-color: white;
+  }
+}

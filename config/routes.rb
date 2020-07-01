@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   root "static_pages#root"
+
+  # get '*path'=>"static_pages#root"
 end

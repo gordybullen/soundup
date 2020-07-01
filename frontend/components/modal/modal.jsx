@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import { MODALS } from '../../shared/constants';
 
 const mapStateToProps = state => {
   return {
@@ -21,22 +22,21 @@ function Modal({ modal, closeModal }) {
     return null;
   };
 
-  let component;
-  switch (modal) {
-    case 'Sign in':
-      component = <LoginFormContainer />;
-      break;
-    case 'Create Account':
-      component = <SignupFormContainer />;
-      break;
-    default:
-      return null;
-  };
+  const component = () => {
+    switch (modal) {
+      case MODALS.SIGN_IN:
+        return <LoginFormContainer />;
+      case MODALS.CREATE_ACCOUNT:
+        return <SignupFormContainer />;
+      default:
+        return null;
+    };
+  }
 
   return (
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
-          {component}
+          {component()}
         </div>
       </div>
   );
