@@ -38,7 +38,6 @@ class TrackForm extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="track-form-container">
         <div className="track-form-content">
