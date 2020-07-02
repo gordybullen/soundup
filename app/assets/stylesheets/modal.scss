@@ -8,10 +8,10 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: hsla(0,0%,94.9%,.9);
   z-index: 1;
   animation-name: modal-fadein;
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
 
   .modal-child {
     position: relative;
@@ -30,7 +30,7 @@
     background: transparent;
   }
   to {
-    background: rgba(0,0,0,0.5);
+    background: hsla(0,0%,94.9%,.9);
   }
 }
 

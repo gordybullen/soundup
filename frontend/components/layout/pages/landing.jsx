@@ -4,7 +4,7 @@ const Landing = () => {
   return (
     <div className="landing-container">
       <div className="landing-content">
-        This be the landing
+        This is the landing
       </div>
     </div>
   );

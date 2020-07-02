@@ -2,6 +2,7 @@ import { RECEIVE_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from '../actions/track_ac
 
 const tracksReducer = (state = {}, action) => {
   Object.freeze(state);
+  const nextState = Object.assign({}, state)
 
   switch (action.type) {
     case RECEIVE_TRACKS:

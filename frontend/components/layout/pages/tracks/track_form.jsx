@@ -49,14 +49,8 @@ class TrackForm extends React.Component {
     if (this.state.imageFile) {
       formData.append('track[image_file]', this.state.imageFile);
     };
-    // formData.append('track[image_url]', this.state.imageFile.url);
-    $.ajax({
-      url: '/api/tracks',
-      method: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false
-    });
+    this.props.createTrack(formData)
+      .then(newTrack => this.props.history.push("/"));
   };
 
   update(field) {
@@ -121,7 +115,9 @@ class TrackForm extends React.Component {
             <div className="basic-info-mid-right">
               <div className="basic-info-form-inputs">
                 <div className="wrapper">
-                  <label>Title</label>
+                  <div className="label-container">
+                    <label>Title</label>
+                  </div>
                     <input type="text"
                       value={this.state.title}
                       onChange={this.update('title')}
@@ -129,7 +125,9 @@ class TrackForm extends React.Component {
                     />
                 </div>
                 <div className="wrapper">
-                  <label>Genre</label>
+                  <div className="label-container">
+                    <label>Genre</label>
+                  </div>
                     <input type="text"
                       value={this.state.genre}
                       onChange={this.update('genre')}
@@ -137,7 +135,9 @@ class TrackForm extends React.Component {
                     />
                 </div>
                 <div className="wrapper">
-                  <label>Description</label>
+                  <div className="label-container">
+                    <label>Description</label>
+                  </div>
                     <textarea
                       value={this.state.description}
                       onChange={this.update('description')}

@@ -2,9 +2,8 @@ class Api::TracksController < ApplicationController
   before_action :require_login, only: [:create, :update, :destroy]
   
   def create
-    debugger
     @track = Track.new(track_params)
-    debugger
+    
     if @track.save
       # render "api/tracks/show"
       render json: ["It worked"], status: 200

@@ -46,7 +46,10 @@ export const requestTrack = trackId => dispatch => {
 
 export const createTrack = track => dispatch => {
   return TrackApiUtil.createTrack(track)
-    .then(newTrack => dispatch(receiveTrack(newTrack)))
+    .then(newTrack => {
+      dispatch(receiveTrack(newTrack));
+      return newTrack;
+    })
     .fail(res => dispatch(receiveErrors(res.responseJSON)));
 };
 
