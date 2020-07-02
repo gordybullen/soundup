@@ -2,10 +2,12 @@ class Api::TracksController < ApplicationController
   before_action :require_login, only: [:create, :update, :destroy]
   
   def create
+    debugger
     @track = Track.new(track_params)
-
+    debugger
     if @track.save
-      render "api/tracks/show"
+      # render "api/tracks/show"
+      render json: ["It worked"], status: 200
     else
       render json: @track.errors.full_messages, status: 422
     end
@@ -35,6 +37,6 @@ class Api::TracksController < ApplicationController
   private 
 
   def track_params
-    params.require(:track).permit(:user_id, :title, :genre, :duration, :description)
+    params.require(:track).permit(:user_id, :title, :genre, :duration, :description, :audio_file, :image_file)
   end
 end

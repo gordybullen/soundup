@@ -22,15 +22,17 @@ class TrackForm extends React.Component {
     this.state = {
       userId: this.props.currentUser.id,
       title: "",
-      genre:"",
-      descrption:"",
-      duration: 0,
+      genre: "",
+      descrption: "",
+      duration: 10,
       audioFile: null,
       imageFile: null,
       imageUrl: null
     };
 
     this.handleAudioFile = this.handleAudioFile.bind(this);
+    this.handleImageFile = this.handleImageFile.bind(this);
+    this.handlSubmit = this.handlSubmit.bind(this);
   };
 
   handlSubmit(e) {
@@ -40,9 +42,13 @@ class TrackForm extends React.Component {
     formData.append('track[title]', this.state.title);
     formData.append('track[genre]', this.state.genre);
     formData.append('track[description]', this.state.description);
-    formData.append('track[audio_file]', this.state.audioFile);
-    formData.append('track[image_file]', this.state.imageFile);
-    // formData.append('track[duration]', this.state.audioFile.duration);
+    formData.append('track[duration]', this.state.duration);
+    if (this.state.audioFile) {
+      formData.append('track[audio_file]', this.state.audioFile);
+    };
+    if (this.state.imageFile) {
+      formData.append('track[image_file]', this.state.imageFile);
+    };
     // formData.append('track[image_url]', this.state.imageFile.url);
     $.ajax({
       url: '/api/tracks',
@@ -53,6 +59,12 @@ class TrackForm extends React.Component {
     });
   };
 
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  };
+
   handleAudioFile(e) {
     this.setState({audioFile: e.currentTarget.files[0]});
   };
@@ -60,11 +72,11 @@ class TrackForm extends React.Component {
   handleImageFile(e) {
     const imageFile = e.currentTarget.files[0];
     const fileReader = new FileReader();
-    fileReader.onloadened = () => {
+    fileReader.onloadend = () => {
       this.setState({imageFile: imageFile, imageUrl: fileReader.result});
     };
-    if (file) {
-      fileReader.readAsDataUrl();
+    if (imageFile) {
+      fileReader.readAsDataURL(imageFile);
     };
   };
 
@@ -79,16 +91,66 @@ class TrackForm extends React.Component {
             type="file"
             onChange={this.handleAudioFile}
             className="track-input" 
+            accept="audio/mp3, audio/wav"
           />
         </label>
       </>
     );
   };
 
-  trackForm() {
+  basicInfoForm() {
+    const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null;
     return (
-      <form className="track-form">
-        The rest of the track info
+      <form onSubmit={this.handlSubmit} className="basic-info-form">
+        <div className="basic-info-form-content">
+          <div className="basic-info-form-header">
+            Basic info
+          </div>
+          <div className="basic-info-form-middle">
+            <div className="basic-info-form-image-upload">
+              {preview}
+              <label className="image-input-container">Upload image
+                <input
+                  type="file"
+                  onChange={this.handleImageFile}
+                  className="basic-info-image-input"
+                  accept="image/jpg"
+                />
+              </label>
+            </div>
+            <div className="basic-info-mid-right">
+              <div className="basic-info-form-inputs">
+                <div className="wrapper">
+                  <label>Title</label>
+                    <input type="text"
+                      value={this.state.title}
+                      onChange={this.update('title')}
+                      className="basic-info-form-input"
+                    />
+                </div>
+                <div className="wrapper">
+                  <label>Genre</label>
+                    <input type="text"
+                      value={this.state.genre}
+                      onChange={this.update('genre')}
+                      className="basic-info-form-input"
+                    />
+                </div>
+                <div className="wrapper">
+                  <label>Description</label>
+                    <textarea
+                      value={this.state.description}
+                      onChange={this.update('description')}
+                      className="basic-info-form-input"
+                    ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button className="basic-info-form-submit">
+            Save
+          </button>
+        </div>
       </form>
     );
   };
@@ -97,9 +159,7 @@ class TrackForm extends React.Component {
     return (
       <div className="track-form-container">
         <div className="track-form-content">
-          <div className="track-upload">
-            { !this.state.audioFile ? this.uploadAudioFile() : this.trackForm() }
-          </div>
+          {!this.state.audioFile ? this.uploadAudioFile() : this.basicInfoForm()}
         </div>
       </div>
     );
