@@ -5,8 +5,7 @@ class Api::TracksController < ApplicationController
     @track = Track.new(track_params)
     
     if @track.save
-      # render "api/tracks/show"
-      render json: ["It worked"], status: 200
+      render :show
     else
       render json: @track.errors.full_messages, status: 422
     end
@@ -16,7 +15,7 @@ class Api::TracksController < ApplicationController
     @track = Track.find_by(id: params[:id])
 
     if @track
-      render "api/tracks/show"
+      render :show
     else
       render json: ["Track does not exist"], status: 404
     end
@@ -24,7 +23,7 @@ class Api::TracksController < ApplicationController
 
   def index
     @tracks = Track.all
-    render "api/tracks/index"
+    render :index
   end
 
   def update

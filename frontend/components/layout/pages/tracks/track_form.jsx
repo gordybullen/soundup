@@ -32,25 +32,32 @@ class TrackForm extends React.Component {
 
     this.handleAudioFile = this.handleAudioFile.bind(this);
     this.handleImageFile = this.handleImageFile.bind(this);
-    this.handlSubmit = this.handlSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  handlSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
+
     const formData = new FormData;
     formData.append('track[user_id]', this.state.userId);
     formData.append('track[title]', this.state.title);
     formData.append('track[genre]', this.state.genre);
     formData.append('track[description]', this.state.description);
     formData.append('track[duration]', this.state.duration);
+    
     if (this.state.audioFile) {
       formData.append('track[audio_file]', this.state.audioFile);
     };
+
     if (this.state.imageFile) {
       formData.append('track[image_file]', this.state.imageFile);
     };
+
     this.props.createTrack(formData)
-      .then(newTrack => this.props.history.push("/"));
+      .then(newTrack => {
+        this.props.history.push(`/tracks/${newTrack.track.id}`);
+      }) // for some reason the object returned by createTrack is an action and not the track itself...
+      // .then(newTrack => this.props.history.push("/"));
   };
 
   update(field) {
@@ -69,6 +76,7 @@ class TrackForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({imageFile: imageFile, imageUrl: fileReader.result});
     };
+
     if (imageFile) {
       fileReader.readAsDataURL(imageFile);
     };
@@ -79,7 +87,7 @@ class TrackForm extends React.Component {
       <>
         <div className="track-form-message">
           Drag and drop your track here
-              </div>
+        </div>
         <label className="track-input-container">or choose a track to upload
           <input
             type="file"
@@ -95,7 +103,7 @@ class TrackForm extends React.Component {
   basicInfoForm() {
     const preview = this.state.imageUrl ? <img src={this.state.imageUrl} /> : null;
     return (
-      <form onSubmit={this.handlSubmit} className="basic-info-form">
+      <form onSubmit={this.handleSubmit} className="basic-info-form">
         <div className="basic-info-form-content">
           <div className="basic-info-form-header">
             Basic info

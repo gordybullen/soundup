@@ -9,6 +9,7 @@ import {
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import Landing from './pages/landing';
 import TrackForm from './pages/tracks/track_form';
+import TrackShow from './pages/tracks/track_show';
 
 const Layout = () => {
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
       <div className="layout-content">
         <Switch>
           <Route exact path="/" component={Landing} />
+          <ProtectedRoute exact path="/tracks/:trackId" component={TrackShow} />
           <ProtectedRoute exact path="/upload" component={TrackForm} />
           <Redirect to="/" />
           {/* <Route path="*" render={() => <Redirect to="/test" />} /> */}
