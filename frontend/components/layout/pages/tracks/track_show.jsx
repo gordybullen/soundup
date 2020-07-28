@@ -1,42 +1,67 @@
 import { connect } from 'react-redux';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { requestTrack, deleteTrack } from '../../../../actions/track_actions';
 
 const mSTP = (state, ownProps) => {
-  const track = state.entities.tracks[ownProps.match.params.trackId]
-
+  const track = state.entities.tracks[ownProps.match.params.trackId];
+  const artist = track ? state.entities.users[track.user_id] : null;
+  // debugger
   return {
-    track: track
+    track: track,
+    artist: artist
   };
-};
+}
 
 const mDTP = dispatch => {
   return {
     requestTrack: trackId => dispatch(requestTrack(trackId)),
-    deleteTrack: trackId => dispatch(deleteTrack(trackId))
+    deleteTrack: trackId => dispatch(deleteTrack(trackId)),
   };
-};
+}
 
-class TrackShow extends React.Component {
-  constructor(props) {
-    super(props);
-  };
+const TrackShow = props => {
+  const { track, artist } = props;
 
-  componentDidMount() {
-    this.props.requestTrack(this.props.match.params.trackId); // not working on initial load to fetch data... how do I get this to work?!!
-  };
+  useEffect(() => {
+    props.requestTrack(props.match.params.trackId);
+  }, []);
 
-  render() {
-    let track;
-    this.props.track ? track = this.props.track : track = null;
-    return (
-      <div className="track-show-container">
+  return (
+    <div className="track-show-container">
+      <div className="track-show-left">
+        <div className="track-artist">
+          {artist ? artist.username : null}
+        </div>
         <div className="track-title">
-          {track ? track.title : ''}
+          {track ? track.title : null}
         </div>
       </div>
-    )
-  }
-};
+      <div className="track-show-right">
+        <img src={track ? track.imageUrl : null} className="track-image" />
+      </div>
+    </div>
+  );
+}
+
+// class TrackShow extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+
+//   componentDidMount() {
+//     this.props.requestTrack(this.props.match.params.trackId);
+//   }
+
+//   render() {
+//     const { track } = this.props;
+//     return (
+//       <div className="track-show-container">
+//         <div className="track-title">
+//           {track ? track.title : null}
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 export default connect(mSTP, mDTP)(TrackShow);

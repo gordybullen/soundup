@@ -10,5 +10,7 @@ Track.destroy_all
 
 demo_user = User.create(username: "DemoUser", email: "demo@user.com", password: "password")
 
-demo_track = Track.create(user_id: demo_user.id, title: "Demo track", genre: "none", duration: 0)
+demo_track = Track.create(user_id: demo_user.id, title: "See You Dancin' (Radio Edit)", genre: "House", duration: 0)
 demo_track.audio_file.attach(io: open("https://soundup-seeds.s3-us-west-1.amazonaws.com/01+See+You+Dancin'+(Radio+Edit).m4a"), filename: "01 See You Dancin' (Radio Edit).m4a")
+demo_track.image_file.attach(io: open("https://soundup-seeds.s3-us-west-1.amazonaws.com/See+You+Dancin'+-+EP.jpg"), filename: "See You Dancin' - EP.jpg")
+demo_track.save
