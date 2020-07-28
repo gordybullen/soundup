@@ -4,7 +4,7 @@ import { requestTrack, deleteTrack } from '../../../../actions/track_actions';
 
 const mSTP = (state, ownProps) => {
   const track = state.entities.tracks[ownProps.match.params.trackId];
-  const artist = track ? state.entities.users[track.user_id] : null;
+  const artist = track ? state.entities.users[track.userId] : null;
   // debugger
   return {
     track: track,
