@@ -29,10 +29,10 @@ const TrackShow = props => {
   return (
     <div className="track-show-container">
       <div className="track-show-left">
-        <div className="track-artist">
+        <div className="track-info track-artist">
           {artist ? artist.username : null}
-        </div>
-        <div className="track-title">
+        </div><br/>
+        <div className="track-info track-title">
           {track ? track.title : null}
         </div>
       </div>

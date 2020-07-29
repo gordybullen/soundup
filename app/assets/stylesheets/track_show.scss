@@ -1,0 +1,46 @@
+@import 'variables';
+
+.track-show-container {
+  display: flex;
+  justify-content: space-between;
+  height: 380px;
+  background: linear-gradient(135deg, rgb(120, 115, 112) 0%, rgb(31, 35, 36) 100%);
+
+  .track-show-left {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: left;
+    padding: 20px;
+
+  .track-info {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 2px 7px 3px;
+    color: #ccc;
+    font-weight: 100;
+    background-color: rgba(0,0,0,.8);
+    font-family: $font;
+    margin-bottom: 5px;
+  }
+
+    .track-artist {
+      text-transform: uppercase;
+    }
+
+    .track-title {
+      color: #fff;
+      font-size: 24px;
+      line-height: 37px;
+    }
+  }
+
+  .track-show-right {
+    .track-image {
+      width: 340px;
+      height: 340px;
+      padding: 20px;
+    }
+  }
+}
+
