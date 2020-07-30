@@ -98,18 +98,18 @@ class SessionForm extends React.Component {
             </ul>
 
             <input type="text"
-                value={this.state.login_credential}
-                onChange={this.update('login_credential')}
-                className="login-input"
-                id="login-input-credential"
-                placeholder="Your email address or username"
+              value={this.state.login_credential}
+              onChange={this.update('login_credential')}
+              className="login-input"
+              id="login-input-credential"
+              placeholder="Your email address or username"
               />
 
             <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-                placeholder="Your password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="login-input"
+              placeholder="Your password"
               />
 
             <button className="session-submit" type="submit">
@@ -159,24 +159,24 @@ class SessionForm extends React.Component {
             </ul>
 
             <input type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  className="login-input"
-                  placeholder="Your username"
+              value={this.state.username}
+              onChange={this.update('username')}
+              className="login-input"
+              placeholder="Your username"
             />
     
             <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="login-input"
-                placeholder="Your email address"
+              value={this.state.email}
+              onChange={this.update('email')}
+              className="login-input"
+              placeholder="Your email address"
             />
 
             <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  className="login-input"
-                  placeholder="Your password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="login-input"
+              placeholder="Your password"
             />
 
             <input className="session-submit" type="submit" value={this.props.formType} />

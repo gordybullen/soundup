@@ -5,7 +5,7 @@ import { createTrack } from '../../../../actions/track_actions';
 const mSTP = state => {
   return {
     errors: state.errors.track,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
   };
 };
 
@@ -38,7 +38,7 @@ class TrackForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData;
+    const formData = new FormData();
     formData.append('track[user_id]', this.state.userId);
     formData.append('track[title]', this.state.title);
     formData.append('track[genre]', this.state.genre);

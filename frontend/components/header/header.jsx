@@ -5,13 +5,13 @@ import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 import { MODALS } from '../../shared/constants';
 
-const mapStateToProps = ({ session, entities: { users } }) => {
+const mSTP = ({ session, entities: { users } }) => {
   return {
     currentUser: users[session.id]
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
   openModal: modal => dispatch(openModal(modal))
 });
@@ -25,22 +25,22 @@ const mapDispatchToProps = dispatch => ({
 //       </div>
 //     </div>
 //   )
-// };
+// }
 
 const Header = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <>
       <button 
-      onClick={() => openModal(MODALS.SIGN_IN)}
-      className="nav-bar-button"
-      id="nav-bar-btn-signin"
+        onClick={() => openModal(MODALS.SIGN_IN)}
+        className="nav-bar-button"
+        id="nav-bar-btn-signin"
       >Sign in
       </button>
 
       <button 
-      onClick={() => openModal(MODALS.CREATE_ACCOUNT)}
-      className="nav-bar-button"
-      id="nav-bar-btn-create"
+        onClick={() => openModal(MODALS.CREATE_ACCOUNT)}
+        className="nav-bar-button"
+        id="nav-bar-btn-create"
       >Create Account
       </button>
     </>
@@ -104,7 +104,4 @@ const Header = ({ currentUser, logout, openModal }) => {
   )
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default connect(mSTP, mDTP)(Header);

@@ -3,7 +3,7 @@ class Api::TracksController < ApplicationController
   
   def create
     @track = Track.new(track_params)
-    debugger
+
     if @track.save
       render :show
     else
@@ -27,6 +27,13 @@ class Api::TracksController < ApplicationController
   end
 
   def update
+    @track = Track.find_by(id: params[:id])
+
+    if @track.update(track_params)
+      render :show
+    else
+      render json: @track.errors.full_messages, status: 422
+    end
   end
 
   def destroy

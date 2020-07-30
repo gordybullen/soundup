@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { requestTrack, deleteTrack } from '../../../../actions/track_actions';
+import { openModal } from '../../../../actions/modal_actions';
+import { MODALS } from '../../../../shared/constants';
 
 const mSTP = (state, ownProps) => {
   const track = state.entities.tracks[ownProps.match.params.trackId];
   const artist = track ? state.entities.users[track.userId] : null;
   const currentUser = state.session.id;
-  // debugger
+
   return {
     track: track,
     artist: artist,
@@ -18,11 +20,12 @@ const mDTP = dispatch => {
   return {
     requestTrack: trackId => dispatch(requestTrack(trackId)),
     deleteTrack: trackId => dispatch(deleteTrack(trackId)),
+    openModal: modal => dispatch(openModal(modal)),
   };
 }
 
 const TrackShow = props => {
-  const { track, artist, currentUser } = props;
+  const { track, artist, currentUser, openModal } = props;
 
   useEffect(() => {
     props.requestTrack(props.match.params.trackId);
@@ -32,7 +35,7 @@ const TrackShow = props => {
     return (
       track && currentUser === track.userId ? (
         <div className="track-edit-container">
-          <button className="track-edit-btn edit">
+          <button className="track-edit-btn edit" onClick={() => openModal(MODALS.EDIT_TRACK)}>
             Edit
           </button>
           <button className="track-edit-btn delete">

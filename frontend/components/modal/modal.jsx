@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import TrackEditForm from '../layout/pages/tracks/track_edit_form';
 import { MODALS } from '../../shared/constants';
 
 const mapStateToProps = state => {
@@ -28,6 +29,8 @@ function Modal({ modal, closeModal }) {
         return <LoginFormContainer />;
       case MODALS.CREATE_ACCOUNT:
         return <SignupFormContainer />;
+      case MODALS.EDIT_TRACK:
+        return <TrackEditForm />;
       default:
         return null;
     };
