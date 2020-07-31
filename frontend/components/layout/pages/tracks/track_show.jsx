@@ -46,22 +46,32 @@ const TrackShow = props => {
     );
   }
 
+  if (track === undefined) {
+    return (
+      "Track could not be found"
+    );
+  }
+
   return (
     <div className="track-show">
       <div className="track-show-container">
         <div className="track-show-left">
           <div className="track-info-container">
             <div className="track-info track-artist">
-              {artist ? artist.username : null}
+              {artist.username}
+              {/* {artist ? artist.username : null} */}
             </div><br/>
             <div className="track-info track-title">
               {track ? track.title : null}
+              {track ? track.title : null}
             </div>
           </div>
-          <audio controls src={track ? track.audioFileUrl : null}></audio>
+          <audio controls src={track.audioFileUrl}></audio>
+          {/* <audio controls src={track ? track.audioFileUrl : null}></audio> */}
         </div>
         <div className="track-show-right">
-          <img src={track ? track.imageUrl : null} className="track-image" />
+          <img src={track.imageUrl} className="track-image" />
+          {/* <img src={track ? track.imageUrl : null} className="track-image" /> */}
         </div>
       </div>
       {trackEdit()}

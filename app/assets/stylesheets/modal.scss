@@ -23,6 +23,11 @@
     animation-name: modal-slidedown;
     animation-duration: 0.5s;
   }
+
+  #edit-track {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 @keyframes modal-fadein {
