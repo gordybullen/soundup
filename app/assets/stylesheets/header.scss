@@ -1,13 +1,15 @@
-@import 'variables';
+@import "variables";
 
 .nav-bar {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: $header-height;
   background: $nav-bar-color;
   width: 100%;
-  font: 100 14px/1.5 Interstate,Lucida Grande,Arial,sans-serif;
+  font-family: 100 14px/1.5 Interstate, Lucida Grande, Arial, sans-serif;
 
   .nav-bar-content {
     display: flex;
@@ -17,7 +19,7 @@
 
     #nav-bar-btn-signout {
       border: none;
-      font: inherit;
+      font-family: inherit;
     }
 
     .nav-bar-link {
@@ -51,12 +53,12 @@
         text-align: center;
       }
     }
-    
+
     .nav-bar-middle {
       flex: 1;
       display: flex;
       padding: 9px 10px 8px;
-      
+
       .nav-bar-search-bar {
         width: 100%;
         padding: 5px 7px;
@@ -67,7 +69,7 @@
         background: #e5e5e5;
       }
     }
-    
+
     .nav-bar-right {
       flex: 1;
       display: flex;
@@ -78,7 +80,7 @@
         border: none;
         cursor: pointer;
       }
-      
+
       .nav-bar-button {
         display: inline-block;
         height: 26px;

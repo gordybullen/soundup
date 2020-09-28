@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class PlayButton extends React.Component {
   constructor(props) {
@@ -8,12 +8,18 @@ class PlayButton extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const audioPlayer = document.getElementById('audio');
+    const audioPlayer = document.getElementById("audio");
 
-    if (this.props.playing && this.props.currentTrack === this.props.match.params.trackId) {
+    if (
+      this.props.playing &&
+      this.props.currentTrack === this.props.match.params.trackId
+    ) {
       this.props.togglePlay();
       audioPlayer.pause();
-    } else if (this.props.playing && this.props.currentTrack !== this.props.match.params.trackId) {
+    } else if (
+      this.props.playing &&
+      this.props.currentTrack !== this.props.match.params.trackId
+    ) {
       this.props.togglePlay();
       audioPlayer.pause();
       this.props.receiveCurrentTrack(this.props.trackId);
@@ -30,17 +36,18 @@ class PlayButton extends React.Component {
 
   render() {
     let icon;
-    if (this.props.playing && this.props.currentTrack === this.props.match.params.trackId) {
-      icon = 'pause';
+    if (
+      this.props.playing &&
+      this.props.currentTrack === this.props.match.params.trackId
+    ) {
+      icon = "pause";
     } else {
-      icon = 'play';
+      icon = "play";
     }
 
     return (
-      <button className={`audio-${icon}`} onClick={this.handleClick}>
-        Play/Pause
-      </button>
-    )
+      <button className={`audio-${icon}`} onClick={this.handleClick}></button>
+    );
   }
 }
 

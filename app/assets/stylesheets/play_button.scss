@@ -1,8 +1,34 @@
 @import 'variables';
 
-.audio-play, .audio-pause, .play-btn, .pause-btn {
-  background-color: $orange;
-  color: white;
-  height: 50px;
-  width: 100px;
+// .audio-play, .audio-pause {
+//   background-color: $orange;
+//   color: white;
+//   height: 50px;
+//   width: 100px;
+// }
+
+.audio-play, .audio-pause {
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: $orange;
+    border: none;
+    outline: none;
+}
+
+.audio-play {
+    background-image: url('grey-play-16.png');
+}
+
+.audio-pause{
+    background-image: url('grey-pause-16.png');
+}
+
+.audio-play:hover, .audio-pause:hover {
+  cursor: pointer;
 }
