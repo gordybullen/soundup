@@ -13,6 +13,11 @@
   animation-name: modal-fadein;
   animation-duration: 0.5s;
 
+  #edit-track {
+    width: 800px;
+    height: 400px;
+  }
+
   .modal-child {
     position: relative;
     background-color: #ffffff;
@@ -24,10 +29,6 @@
     animation-duration: 0.5s;
   }
 
-  #edit-track {
-    width: 600px;
-    height: 600px;
-  }
 }
 
 @keyframes modal-fadein {

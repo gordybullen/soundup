@@ -74,7 +74,7 @@ const TrackEditForm = props => {
 
     return (
       <form onSubmit={handleSubmit} className="basic-info-form">
-        <div className="basic-info-form-content">
+        <div className="track-info-form-content">
           <div className="basic-info-form-header">
             Edit track info
           </div>
@@ -124,7 +124,7 @@ const TrackEditForm = props => {
             </div>
           </div>
           <button className="basic-info-form-submit">
-            Save
+            Update
           </button>
         </div>
       </form>
@@ -132,16 +132,18 @@ const TrackEditForm = props => {
   }
 
   return (
-    <div className="track-edit-form-container">
-      <div className="close-modal-container">
+    <div className="track-form-container">
+      {/* <div className="close-modal-container">
         <button
           className="close-modal"
           type="button"
           onClick={props.closeModal}>
           <i className="fa fa-times" style={{ color: "#ccc" }} aria-hidden="true"></i>
         </button>
+      </div> */}
+      <div className="track-form-content">
+        {basicInfoForm()}
       </div>
-      {basicInfoForm()}
     </div>
   );
 }

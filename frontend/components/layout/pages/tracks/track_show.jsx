@@ -48,7 +48,7 @@ const TrackShow = props => {
 
   if (track === undefined) {
     return (
-      "Track could not be found"
+      null
     );
   }
 
@@ -62,7 +62,6 @@ const TrackShow = props => {
               {/* {artist ? artist.username : null} */}
             </div><br/>
             <div className="track-info track-title">
-              {track ? track.title : null}
               {track ? track.title : null}
             </div>
           </div>
