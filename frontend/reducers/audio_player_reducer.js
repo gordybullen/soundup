@@ -1,0 +1,24 @@
+import { RECEIVE_CURRENT_TRACK, TOGGLE_PLAY } from '../actions/audio_actions';
+
+const defaultState = {
+  playing: false,
+  currentTrack: null
+}
+
+const audioPlayerReducer = (state = defaultState, action) => {
+  Object.freeze(state);
+  const newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case RECEIVE_CURRENT_TRACK:
+      newState.currentTrack = action.trackId;
+      return newState;
+    case TOGGLE_PLAY:
+      newState.playing = !state.playing;
+      return newState;
+    default:
+      return state;
+  }
+}
+
+export default audioPlayerReducer;

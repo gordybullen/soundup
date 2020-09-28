@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { requestTrack, deleteTrack } from '../../../../actions/track_actions';
 import { openModal } from '../../../../actions/modal_actions';
 import { MODALS } from '../../../../shared/constants';
+import PlayButtonContainer from '../../../play_button_container'
 
 const mSTP = (state, ownProps) => {
   const track = state.entities.tracks[ownProps.match.params.trackId];
@@ -65,7 +66,8 @@ const TrackShow = props => {
               {track ? track.title : null}
             </div>
           </div>
-          <audio controls src={track.audioFileUrl}></audio>
+            <PlayButtonContainer trackId={track} />
+          {/* <audio controls src={track.audioFileUrl}></audio> */}
           {/* <audio controls src={track ? track.audioFileUrl : null}></audio> */}
         </div>
         <div className="track-show-right">

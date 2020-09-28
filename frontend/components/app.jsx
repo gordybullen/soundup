@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header/header';
 import Modal from './modal/modal';
 import Layout from './layout/layout'
+import AudioPlayer from './footer/footer_container'
 // import {
 //   Route,
 //   Redirect,
@@ -16,7 +17,7 @@ const App = () => (
     <Modal />
     <Header />
     <Layout />
-    {/* <Footer /> */}
+    <AudioPlayer />
   </div>
 );
 
