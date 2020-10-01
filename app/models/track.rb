@@ -3,13 +3,18 @@
 # Table name: tracks
 #
 #  id          :bigint           not null, primary key
-#  user_id     :integer          not null
-#  title       :string           not null
-#  genre       :string
-#  duration    :integer          not null
 #  description :text
+#  duration    :integer          not null
+#  genre       :string
+#  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer          not null
+#
+# Indexes
+#
+#  index_tracks_on_title    (title)
+#  index_tracks_on_user_id  (user_id)
 #
 class Track < ApplicationRecord
   validates :user_id, :title, :duration, presence: true

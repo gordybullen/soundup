@@ -3,13 +3,18 @@
 # Table name: tracks
 #
 #  id          :bigint           not null, primary key
-#  user_id     :integer          not null
-#  title       :string           not null
-#  genre       :string
+#  description :text
 #  duration    :integer          not null
+#  genre       :string
+#  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  description :text
+#  user_id     :integer          not null
+#
+# Indexes
+#
+#  index_tracks_on_title    (title)
+#  index_tracks_on_user_id  (user_id)
 #
 
 # This model initially had no columns defined. If you add columns to the

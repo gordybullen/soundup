@@ -68,6 +68,7 @@
 
 .track-info {
   @extend %flex-col;
+  max-height: 100%;
 }
 
 #player-artist {
