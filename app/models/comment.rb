@@ -17,4 +17,25 @@
 #  index_comments_on_user_id            (user_id)
 #
 class Comment < ApplicationRecord
+  validates :body, :parent_comment_id, :track_id, :user_id, presence: true
+
+  belongs_to :commenter,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
+
+  belongs_to :track,
+    primary_key: :id,
+    foreign_key: :track_id,
+    class_name: :Track
+
+  belongs_to :parent_comment,
+    primary_key: :id,
+    foreign_key: :parent_comment_id,
+    class_name: :Comment
+
+  has_one :child_comment,
+    primary_key: :id,
+    foreign_key: :parent_comment_id,
+    class_name: :Comment
 end

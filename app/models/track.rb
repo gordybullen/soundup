@@ -25,6 +25,11 @@ class Track < ApplicationRecord
   has_one_attached :audio_file
   has_one_attached :image_file
 
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :track_id,
+    class_name: :Comment
+
   def ensure_audio_file
     unless self.audio_file.attached?
       errors[:audio_file] << "Must be attached"
