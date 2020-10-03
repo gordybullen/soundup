@@ -1,40 +1,35 @@
-export const fetchTracks = () => (
+export const fetchTracks = () =>
   $.ajax({
-    method: 'GET',
-    url: '/api/tracks'
-  })
-)
+    method: "GET",
+    url: "/api/tracks",
+  });
 
-export const fetchTrack = trackId => (
+export const fetchTrack = (trackId) =>
   $.ajax({
-    method: 'GET',
-    url: `/api/tracks/${trackId}`
-  })
-)
+    method: "GET",
+    url: `/api/tracks/${trackId}`,
+  });
 
-export const createTrack = track => (
+export const createTrack = (track) =>
   $.ajax({
-    url: '/api/tracks',
-    method: 'POST',
+    method: "POST",
+    url: "/api/tracks",
     data: track,
     contentType: false,
-    processData: false
-  })
-)
+    processData: false,
+  });
 
-export const updateTrack = (track, trackId) => (
+export const updateTrack = (track, trackId) =>
   $.ajax({
-    method: 'PATCH',
+    method: "PATCH",
     url: `/api/tracks/${trackId}`,
     data: track,
     contentType: false,
     processData: false,
-  })
-)
+  });
 
-export const deleteTrack = trackId => (
+export const deleteTrack = (trackId) =>
   $.ajax({
-    method: 'DELETE',
-    url: `/api/tracks/${trackId}`
-  })
-)
+    method: "DELETE",
+    url: `/api/tracks/${trackId}`,
+  });

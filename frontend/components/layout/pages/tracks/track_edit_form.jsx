@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { updateTrack } from '../../../../actions/track_actions';
-import { withRouter } from 'react-router-dom';
-import { closeModal } from '../../../../actions/modal_actions';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { updateTrack } from "../../../../actions/track_actions";
+import { withRouter } from "react-router-dom";
+import { closeModal } from "../../../../actions/modal_actions";
 
 const mSTP = (state, ownProps) => {
-  let trackId = ownProps.location.pathname.split('/');
+  let trackId = ownProps.location.pathname.split("/");
   trackId = trackId[trackId.length - 1];
   const track = state.entities.tracks[trackId];
   // const track = state.entities.tracks[1]; // how do I access ownProps from modal? withRouter!!!
@@ -13,30 +13,30 @@ const mSTP = (state, ownProps) => {
     track: track,
     errors: state.errors.track,
   };
-}
+};
 
-const mDTP = dispatch => {
+const mDTP = (dispatch) => {
   return {
     updateTrack: (track, trackId) => dispatch(updateTrack(track, trackId)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   };
-}
+};
 
-const TrackEditForm = props => {
+const TrackEditForm = (props) => {
   const { track, errors } = props;
   const title = useFormInput(track.title);
   const genre = useFormInput(track.genre);
   const description = useFormInput(track.description ? track.description : "");
   const [imageUrl, setImageUrl] = useState(track.imageUrl);
   const [imageFile, setImageFile] = useState(null);
-  
-  const handleSubmit = e => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('track[title]', title.value);
-    formData.append('track[genre]', genre.value);
-    formData.append('track[description]', description.value);
+    formData.append("track[title]", title.value);
+    formData.append("track[genre]", genre.value);
+    formData.append("track[description]", description.value);
     // formData.append('track[user_id]', this.state.userId);
     // formData.append('track[duration]', this.state.duration);
 
@@ -45,29 +45,28 @@ const TrackEditForm = props => {
     // }
 
     if (imageFile) {
-      formData.append('track[image_file]', imageFile);
+      formData.append("track[image_file]", imageFile);
     }
 
-    props.updateTrack(formData, track.id)
-      .then(updatedTrack => {
-        props.closeModal();
-        props.history.push(`/tracks/${updatedTrack.track.id}`)
-      });
-  }
+    props.updateTrack(formData, track.id).then((updatedTrack) => {
+      props.closeModal();
+      props.history.push(`/tracks/${updatedTrack.track.id}`);
+    });
+  };
 
-  const handleImageFile = e => {
+  const handleImageFile = (e) => {
     const imageFile = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       // this.setState({ imageFile: imageFile, imageUrl: fileReader.result });
       setImageFile(imageFile);
       setImageUrl(fileReader.result);
-    }
+    };
 
     if (imageFile) {
       fileReader.readAsDataURL(imageFile);
     }
-  }
+  };
 
   const basicInfoForm = () => {
     const preview = <img src={imageUrl} />;
@@ -75,13 +74,12 @@ const TrackEditForm = props => {
     return (
       <form onSubmit={handleSubmit} className="basic-info-form">
         <div className="track-info-form-content">
-          <div className="basic-info-form-header">
-            Edit track info
-          </div>
+          <div className="basic-info-form-header">Edit track info</div>
           <div className="basic-info-form-middle">
             <div className="basic-info-form-image-upload">
               {preview}
-              <label className="image-input-container">Upload image
+              <label className="image-input-container">
+                Upload image
                 <input
                   type="file"
                   onChange={handleImageFile}
@@ -96,7 +94,8 @@ const TrackEditForm = props => {
                   <div className="label-container">
                     <label>Title</label>
                   </div>
-                  <input type="text"
+                  <input
+                    type="text"
                     className="basic-info-form-input"
                     {...title}
                   />
@@ -105,7 +104,8 @@ const TrackEditForm = props => {
                   <div className="label-container">
                     <label>Genre</label>
                   </div>
-                  <input type="text"
+                  <input
+                    type="text"
                     className="basic-info-form-input"
                     {...genre}
                   />
@@ -117,19 +117,16 @@ const TrackEditForm = props => {
                   <textarea
                     className="basic-info-form-input"
                     {...description}
-                  >
-                  </textarea>
+                  ></textarea>
                 </div>
               </div>
             </div>
           </div>
-          <button className="basic-info-form-submit">
-            Update
-          </button>
+          <button className="basic-info-form-submit">Update</button>
         </div>
       </form>
     );
-  }
+  };
 
   return (
     <div className="track-form-container">
@@ -141,15 +138,13 @@ const TrackEditForm = props => {
           <i className="fa fa-times" style={{ color: "#ccc" }} aria-hidden="true"></i>
         </button>
       </div> */}
-      <div className="track-form-content">
-        {basicInfoForm()}
-      </div>
+      <div className="track-form-content">{basicInfoForm()}</div>
     </div>
   );
-}
+};
 
 function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue)
+  const [value, setValue] = useState(initialValue);
 
   function handleChange(e) {
     setValue(e.currentTarget.value);
@@ -157,7 +152,7 @@ function useFormInput(initialValue) {
 
   return {
     value,
-    onChange: handleChange
+    onChange: handleChange,
   };
 }
 

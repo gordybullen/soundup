@@ -6,7 +6,7 @@
 #  body              :text             not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  parent_comment_id :integer          not null
+#  parent_comment_id :integer
 #  track_id          :integer          not null
 #  user_id           :integer          not null
 #

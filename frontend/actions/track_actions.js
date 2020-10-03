@@ -1,63 +1,50 @@
-import * as TrackApiUtil from '../util/track_api_util';
+import * as TrackApiUtil from "../util/track_api_util";
 
-export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
-export const RECEIVE_TRACK = 'RECEIVE_TRACK';
-export const REMOVE_TRACK = 'REMOVE_TRACK';
-export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
+export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
+export const RECEIVE_TRACK = "RECEIVE_TRACK";
+export const REMOVE_TRACK = "REMOVE_TRACK";
+export const RECEIVE_TRACK_ERRORS = "RECEIVE_TRACK_ERRORS";
 
-const receiveTracks = tracks => {
+const receiveTracks = (tracks) => {
   return {
     type: RECEIVE_TRACKS,
-    tracks
+    tracks,
   };
 };
 
-const receiveTrack = track => {
+const receiveTrack = (track) => {
   return {
     type: RECEIVE_TRACK,
-    track
-  };
-};
-const removeTrack = trackId => {
-  return {
-    type: REMOVE_TRACK,
-    trackId
+    track,
   };
 };
 
-const receiveErrors = errors => {
-  return {
-    type: RECEIVE_TRACK_ERRORS,
-    errors
-  };
-};
-
-export const requestTracks = () => dispatch => {
+export const requestTracks = () => (dispatch) => {
   return TrackApiUtil.fetchTracks()
-    .then(tracks => dispatch(receiveTracks(tracks)))
-    .fail(res => dispatch(receiveErrors(res.responseJSON)));
+    .then((tracks) => dispatch(receiveTracks(tracks)))
+    .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };
 
-export const requestTrack = trackId => dispatch => {
+export const requestTrack = (trackId) => (dispatch) => {
   return TrackApiUtil.fetchTrack(trackId)
-    .then(track => dispatch(receiveTrack(track)))
-    .fail(res => dispatch(receiveErrors(res.responseJSON)));
+    .then((track) => dispatch(receiveTrack(track)))
+    .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };
 
-export const createTrack = track => dispatch => {
+export const createTrack = (track) => (dispatch) => {
   return TrackApiUtil.createTrack(track)
-    .then(newTrack => dispatch(receiveTrack(newTrack)))
-    .fail(res => dispatch(receiveErrors(res.responseJSON)));
+    .then((newTrack) => dispatch(receiveTrack(newTrack)))
+    .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };
 
-export const updateTrack = (track, trackId) => dispatch => {
+export const updateTrack = (track, trackId) => (dispatch) => {
   return TrackApiUtil.updateTrack(track, trackId)
-    .then(updatedTrack => dispatch(receiveTrack(updatedTrack)))
-    .fail(res => dispatch(receiveErrors(res.responseJSON)));
+    .then((updatedTrack) => dispatch(receiveTrack(updatedTrack)))
+    .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };
 
-export const deleteTrack = trackId => dispatch => {
+export const deleteTrack = (trackId) => (dispatch) => {
   return TrackApiUtil.deleteTrack(trackId)
     .then(() => dispatch(removeTrack(trackId)))
-    .fail(res => dispatch(receiveErrors(res.responseJSON)));
+    .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };

@@ -6,7 +6,7 @@
 #  body              :text             not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  parent_comment_id :integer          not null
+#  parent_comment_id :integer
 #  track_id          :integer          not null
 #  user_id           :integer          not null
 #
@@ -17,7 +17,7 @@
 #  index_comments_on_user_id            (user_id)
 #
 class Comment < ApplicationRecord
-  validates :body, :parent_comment_id, :track_id, :user_id, presence: true
+  validates :body, :track_id, :user_id, presence: true
 
   belongs_to :commenter,
     primary_key: :id,
@@ -32,7 +32,8 @@ class Comment < ApplicationRecord
   belongs_to :parent_comment,
     primary_key: :id,
     foreign_key: :parent_comment_id,
-    class_name: :Comment
+    class_name: :Comment,
+    optional: :true
 
   has_one :child_comment,
     primary_key: :id,

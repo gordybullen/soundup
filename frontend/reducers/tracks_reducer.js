@@ -1,8 +1,12 @@
-import { RECEIVE_TRACKS, RECEIVE_TRACK, REMOVE_TRACK } from '../actions/track_actions';
+import {
+  RECEIVE_TRACKS,
+  RECEIVE_TRACK,
+  REMOVE_TRACK,
+} from "../actions/track_actions";
 
 const tracksReducer = (state = {}, action) => {
   Object.freeze(state);
-  const nextState = Object.assign({}, state)
+  const nextState = Object.assign({}, state);
 
   switch (action.type) {
     case RECEIVE_TRACKS:
@@ -11,11 +15,11 @@ const tracksReducer = (state = {}, action) => {
       nextState[action.track.id] = action.track;
       return nextState;
     case REMOVE_TRACK:
-      delete nextState[track.eventId];
+      delete nextState[track.id];
       return nextState;
     default:
       return state;
-  };
+  }
 };
 
 export default tracksReducer;

@@ -13,8 +13,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def index
-    @track = Track.find_by(id: params(:track_id))
-    @comments = @track.comments
+    @comments = Comment.where(track_id: params[:trackId])
     render :index
   end
 
@@ -28,6 +27,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:track_id, :body)
+    # need to user camel case for trackId because it's coming from frontend... how to auto change casing?
+    params.require(:comment).permit(:track_id, :body, :parent_comment_id)
   end
 end
