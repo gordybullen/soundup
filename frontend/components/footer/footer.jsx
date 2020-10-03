@@ -96,7 +96,7 @@ class AudioPlayer extends React.Component {
           <audio
             id="audio"
             src={audio}
-            preload="auto"
+            preload="none"
             controls
             onPlaying={this.handleTimeElapsed}
             onLoadedMetadata={this.setMetadata}

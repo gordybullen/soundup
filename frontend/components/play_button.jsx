@@ -25,12 +25,38 @@ class PlayButton extends React.Component {
       this.props.receiveCurrentTrack(this.props.trackId);
       this.props.togglePlay();
       audioPlayer.setAttribute("autoPlay", "");
-      audioPlayer.play();
+      // audioPlayer.play();
+      const playPromise = audioPlayer.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch((error) => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+      }
     } else {
       this.props.receiveCurrentTrack(this.props.match.params.trackId);
       this.props.togglePlay();
       audioPlayer.setAttribute("autoPlay", "");
-      audioPlayer.play();
+      // audioPlayer.play();
+      const playPromise = audioPlayer.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch((error) => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+      }
     }
   }
 

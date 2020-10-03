@@ -86,8 +86,8 @@ const TrackShow = (props) => {
       </div>
       {trackEdit()}
       <CommentForm trackId={track.id} createComment={props.createComment} />
-      {comments.map((comment) => (
-        <div>{comment.body}</div>
+      {comments.map((comment, idx) => (
+        <div key={`comment-${idx}`}>{comment.body}</div>
       ))}
     </div>
   );
