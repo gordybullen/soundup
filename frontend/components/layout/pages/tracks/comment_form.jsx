@@ -23,7 +23,7 @@ const CommentForm = (props) => {
             <input
               type="text"
               className="comment-body-input"
-              placeholder="Write a comment"
+              placeholder="Write a comment..."
               {...body}
             />
           </div>

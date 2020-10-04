@@ -1,12 +1,7 @@
-@import 'variables';
+@import "variables";
 
 .comment-form-container {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // margin-top: 5px;
   width: 100%;
-  // height: 80px;
 }
 
 .comment-form {
@@ -50,7 +45,7 @@
   padding: 0 9px;
   font-size: 12px;
   outline: none;
-  cursor: pointer;
+  // cursor: pointer;
   border: 1px solid #e5e5e5;
   font-size: 18px;
   margin: 0 5px 0 5px;

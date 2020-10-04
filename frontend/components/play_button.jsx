@@ -72,7 +72,9 @@ class PlayButton extends React.Component {
     }
 
     return (
-      <button className={`audio-${icon}`} onClick={this.handleClick}></button>
+      <div className="play-btn-container">
+        <button className={`audio-${icon}`} onClick={this.handleClick}></button>
+      </div>
     );
   }
 }

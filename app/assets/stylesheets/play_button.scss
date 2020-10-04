@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 // .audio-play, .audio-pause {
 //   background-color: $orange;
@@ -7,28 +7,45 @@
 //   width: 100px;
 // }
 
-.audio-play, .audio-pause {
-    display: flex;
-    justify-content: center;
-    height: 36px;
-    width: 36px;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: $orange;
-    border: none;
-    outline: none;
+.play-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  // height: 36px;
+  // width: 36px;
+  // background-color: $orange;
+}
+
+.audio-play,
+.audio-pause {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .audio-play {
-    background-image: url('grey-play-16.png');
+  background-image: url("play-circle-solid.svg");
+  // height: 90%;
+  // width: 90%;
 }
 
-.audio-pause{
-    background-image: url('grey-pause-16.png');
+.audio-pause {
+  background-image: url("pause-circle-solid.svg");
 }
 
-.audio-play:hover, .audio-pause:hover {
+.audio-play:hover,
+.audio-pause:hover {
   cursor: pointer;
+  filter: invert(49%) sepia(72%) saturate(1658%) hue-rotate(338deg)
+    brightness(101%) contrast(99%);
 }
