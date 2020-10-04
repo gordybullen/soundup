@@ -18,10 +18,19 @@ const CommentForm = (props) => {
     <div className="comment-form-container">
       <form onSubmit={handleSubmit} className="comment-form">
         <div className="comment-form-content">
-          <span>Write a comment here:</span>
-          <input type="text" className="comment-body-input" {...body} />
+          <div className="comment-form-wrapper">
+            <img src={props.commenter.imageUrl} />
+            <input
+              type="text"
+              className="comment-body-input"
+              placeholder="Write a comment"
+              {...body}
+            />
+          </div>
         </div>
-        <button>Create Comment</button>
+        <button type="submit" className="comment-form-submit">
+          Create Comment
+        </button>
       </form>
     </div>
   );

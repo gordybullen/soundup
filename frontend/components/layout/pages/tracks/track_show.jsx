@@ -15,6 +15,7 @@ const mSTP = (state, ownProps) => {
   const track = state.entities.tracks[ownProps.match.params.trackId];
   const artist = track ? state.entities.users[track.userId] : null;
   const currentUser = state.session.id;
+  const commenter = currentUser ? state.entities.users[currentUser] : null;
   const comments = track ? Object.values(state.entities.comments) : null;
 
   return {
@@ -22,6 +23,7 @@ const mSTP = (state, ownProps) => {
     artist: artist,
     currentUser: currentUser,
     comments: comments,
+    commenter: commenter,
   };
 };
 
@@ -36,7 +38,7 @@ const mDTP = (dispatch) => {
 };
 
 const TrackShow = (props) => {
-  const { track, artist, currentUser, openModal, comments } = props;
+  const { track, artist, currentUser, openModal, comments, commenter } = props;
 
   useEffect(() => {
     props.requestTrack(props.match.params.trackId);
@@ -85,7 +87,11 @@ const TrackShow = (props) => {
         </div>
       </div>
       {trackEdit()}
-      <CommentForm trackId={track.id} createComment={props.createComment} />
+      <CommentForm
+        trackId={track.id}
+        commenter={commenter}
+        createComment={props.createComment}
+      />
       {comments.map((comment, idx) => (
         <div key={`comment-${idx}`}>{comment.body}</div>
       ))}

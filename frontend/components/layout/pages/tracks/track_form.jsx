@@ -24,7 +24,7 @@ class TrackForm extends React.Component {
       title: "",
       genre: "",
       descrption: "",
-      duration: 10,
+      duration: null,
       audioFile: null,
       imageFile: null,
       imageUrl: null,
@@ -37,7 +37,7 @@ class TrackForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    
     const formData = new FormData();
     formData.append("track[user_id]", this.state.userId);
     formData.append("track[title]", this.state.title);
