@@ -21,7 +21,7 @@ const receiveTrack = (track) => {
 
 const receiveErrors = (errors) => {
   return {
-    type: RECEIVE_COMMENT_ERRORS,
+    type: RECEIVE_TRACK_ERRORS,
     errors,
   };
 };
