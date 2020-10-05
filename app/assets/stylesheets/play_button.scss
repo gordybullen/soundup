@@ -31,6 +31,8 @@
   background: transparent;
   border: none;
   outline: none;
+  filter: invert(49%) sepia(72%) saturate(1658%) hue-rotate(338deg)
+    brightness(101%) contrast(99%);
 }
 
 .audio-play {
@@ -46,6 +48,6 @@
 .audio-play:hover,
 .audio-pause:hover {
   cursor: pointer;
-  filter: invert(49%) sepia(72%) saturate(1658%) hue-rotate(338deg)
-    brightness(101%) contrast(99%);
+  filter: invert(93%) sepia(90%) saturate(5052%) hue-rotate(269deg)
+    brightness(110%) contrast(105%);
 }

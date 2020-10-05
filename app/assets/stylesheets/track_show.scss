@@ -46,7 +46,6 @@
     }
   }
 
-
   .track-show-right {
     .track-image {
       width: 340px;
@@ -82,5 +81,41 @@
     text-align: center;
     vertical-align: baseline;
     margin-right: 5px;
+  }
+}
+
+.comments-container {
+  width: 90%;
+  padding: 5px;
+  border-top-color: #e5e5e5;
+  border-top-style: solid;
+  border-top-width: 1px;
+
+  .comment-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .comment-left {
+      @extend %flex-center;
+
+      img {
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+        border-radius: 50%;
+      }
+
+      .comment-text {
+        @extend %flex-col
+      }
+
+      .comment-username {
+        font-size: 14px;
+        color: gray;
+      }
+    }
   }
 }

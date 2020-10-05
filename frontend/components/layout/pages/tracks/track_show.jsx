@@ -68,22 +68,16 @@ const TrackShow = (props) => {
       <div className="track-show-container">
         <div className="track-show-left">
           <div className="track-info-container">
-            <div className="track-info track-artist">
-              {artist.username}
-              {/* {artist ? artist.username : null} */}
-            </div>
+            <div className="track-info track-artist">{artist.username}</div>
             <br />
             <div className="track-info track-title">
               {track ? track.title : null}
             </div>
           </div>
           <PlayButtonContainer trackId={track} />
-          {/* <audio controls src={track.audioFileUrl}></audio> */}
-          {/* <audio controls src={track ? track.audioFileUrl : null}></audio> */}
         </div>
         <div className="track-show-right">
           <img src={track.imageUrl} className="track-image" />
-          {/* <img src={track ? track.imageUrl : null} className="track-image" /> */}
         </div>
       </div>
       {trackEdit()}
@@ -92,32 +86,24 @@ const TrackShow = (props) => {
         commenter={commenter}
         createComment={props.createComment}
       />
-      {comments.map((comment, idx) => (
-        <div key={`comment-${idx}`}>{comment.body}</div>
-      ))}
+      <div className="comments-container">
+        {comments.map((comment, idx) => (
+          <div className="comment-container" key={`comment-${idx}`}>
+            <div className="comment-left">
+              <img src={comment.imageUrl} />
+              <div className="comment-text">
+                <span className="comment-username">{comment.username}</span>
+                <span>{comment.body}</span>
+              </div>
+            </div>
+            <div className="comment-right">
+              <span>{comment.createdAt}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
-
-// class TrackShow extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   componentDidMount() {
-//     this.props.requestTrack(this.props.match.params.trackId);
-//   }
-
-//   render() {
-//     const { track } = this.props;
-//     return (
-//       <div className="track-show-container">
-//         <div className="track-title">
-//           {track ? track.title : null}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 export default connect(mSTP, mDTP)(TrackShow);
