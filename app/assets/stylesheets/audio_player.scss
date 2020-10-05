@@ -58,11 +58,11 @@
 }
 
 .play-btn {
-  background-image: url("grey-play-16.png");
+  background-image: url(asset_path("grey-play-16.png"));
 }
 
 .pause-btn {
-  background-image: url("grey-pause-16.png");
+  background-image: url(asset_path("grey-pause-16.png"));
 }
 
 .audio-player-image {

@@ -36,13 +36,13 @@
 }
 
 .audio-play {
-  background-image: url("play-circle-solid.svg");
+  background-image: url(asset_path("play-circle-solid.svg"));
   // height: 90%;
   // width: 90%;
 }
 
 .audio-pause {
-  background-image: url("pause-circle-solid.svg");
+  background-image: url(asset_path("pause-circle-solid.svg"));
 }
 
 .audio-play:hover,

@@ -38,7 +38,6 @@ const TrackEditForm = (props) => {
     formData.append("track[genre]", genre.value);
     formData.append("track[description]", description.value);
     // formData.append('track[user_id]', this.state.userId);
-    // formData.append('track[duration]', this.state.duration);
 
     // if (this.state.audioFile) {
     //   formData.append('track[audio_file]', this.state.audioFile);

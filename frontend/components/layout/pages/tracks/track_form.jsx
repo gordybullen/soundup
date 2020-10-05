@@ -24,7 +24,6 @@ class TrackForm extends React.Component {
       title: "",
       genre: "",
       descrption: "",
-      duration: null,
       audioFile: null,
       imageFile: null,
       imageUrl: null,
@@ -43,7 +42,6 @@ class TrackForm extends React.Component {
     formData.append("track[title]", this.state.title);
     formData.append("track[genre]", this.state.genre);
     formData.append("track[description]", this.state.description);
-    formData.append("track[duration]", this.state.duration);
 
     if (this.state.audioFile) {
       formData.append("track[audio_file]", this.state.audioFile);

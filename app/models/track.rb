@@ -4,7 +4,6 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
-#  duration    :integer          not null
 #  genre       :string
 #  title       :string           not null
 #  created_at  :datetime         not null
@@ -17,7 +16,7 @@
 #  index_tracks_on_user_id  (user_id)
 #
 class Track < ApplicationRecord
-  validates :user_id, :title, :duration, presence: true
+  validates :user_id, :title, presence: true
 
   validate :ensure_audio_file
   validate :ensure_image_file

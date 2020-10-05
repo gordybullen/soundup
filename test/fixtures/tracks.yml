@@ -4,7 +4,6 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
-#  duration    :integer          not null
 #  genre       :string
 #  title       :string           not null
 #  created_at  :datetime         not null
