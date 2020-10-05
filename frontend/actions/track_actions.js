@@ -19,6 +19,13 @@ const receiveTrack = (track) => {
   };
 };
 
+const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_COMMENT_ERRORS,
+    errors,
+  };
+};
+
 export const requestTracks = () => (dispatch) => {
   return TrackApiUtil.fetchTracks()
     .then((tracks) => dispatch(receiveTracks(tracks)))
