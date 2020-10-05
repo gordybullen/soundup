@@ -52,6 +52,11 @@
   background-color: transparent;
 }
 
+.play-btn:hover,
+.pause-btn:hover {
+  cursor: pointer;
+}
+
 .play-btn {
   background-image: url("grey-play-16.png");
 }

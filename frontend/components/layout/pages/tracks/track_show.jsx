@@ -63,6 +63,11 @@ const TrackShow = (props) => {
     return null;
   }
 
+  function createdAtToDate(createdAt) {
+    const date = createdAt.slice(0, 10);
+    return date;
+  }
+
   return (
     <div className="track-show">
       <div className="track-show-container">
@@ -86,21 +91,38 @@ const TrackShow = (props) => {
         commenter={commenter}
         createComment={props.createComment}
       />
-      <div className="comments-container">
-        {comments.map((comment, idx) => (
-          <div className="comment-container" key={`comment-${idx}`}>
-            <div className="comment-left">
-              <img src={comment.imageUrl} />
-              <div className="comment-text">
-                <span className="comment-username">{comment.username}</span>
-                <span>{comment.body}</span>
-              </div>
-            </div>
-            <div className="comment-right">
-              <span>{comment.createdAt}</span>
+      <div className="track-lower-container">
+        <div className="artist-container">
+          <img src={artist.imageUrl} />
+          <span>{artist.username}</span>
+        </div>
+        <div className="track-lower-right">
+          <div className="lower-right-top">
+            <div className="track-description">{track.description}</div>
+            <div className="comment-count-container">
+              <i className="far fa-comment-alt"></i>
+              <span className="comment-count"> {comments.length} comments</span>
             </div>
           </div>
-        ))}
+          <div className="comments-container">
+            {comments.map((comment, idx) => (
+              <div className="comment-container" key={`comment-${idx}`}>
+                <div className="comment-left">
+                  <img src={comment.imageUrl} />
+                  <div className="comment-text">
+                    <span className="comment-username">{comment.username}</span>
+                    <span>{comment.body}</span>
+                  </div>
+                </div>
+                <div className="comment-right">
+                  <span className="comment-date">
+                    {createdAtToDate(comment.createdAt)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -84,12 +84,67 @@
   }
 }
 
+.track-lower-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+
+  .artist-container {
+    flex: 1;
+    padding-right: 20px;
+    @extend %flex-col;
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-size: 14px;
+      color: $nav-bar-color;
+    }
+  }
+}
+
+.track-lower-right {
+  flex: 6;
+  width: 100%;
+
+  .lower-right-top {
+    @extend %flex-col;
+
+    .comment-count-container {
+      padding-top: 10px;
+      margin-bottom: 5px;
+
+      .track-description {
+        font-size: 14px;
+        color: gray;
+      }
+
+      .far {
+        color: gray;
+      }
+      
+      .comment-count {
+        font-size: 14px;
+        color: lightgray;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
 .comments-container {
   width: 90%;
   padding: 5px;
   border-top-color: #e5e5e5;
   border-top-style: solid;
   border-top-width: 1px;
+  padding-right: 50px;
 
   .comment-container {
     display: flex;
@@ -116,6 +171,11 @@
         font-size: 14px;
         color: gray;
       }
+    }
+    
+    .comment-date {
+      font-size: 14px;
+      color: gray;
     }
   }
 }
