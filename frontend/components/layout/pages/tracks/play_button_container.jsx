@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { receiveCurrentTrack, togglePlay } from "../actions/audio_actions";
+import { receiveCurrentTrack, togglePlay } from "../../../../actions/audio_actions";
 import PlayButton from "./play_button";
 
 const mSTP = (state) => {

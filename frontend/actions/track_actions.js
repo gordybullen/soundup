@@ -26,8 +26,8 @@ const receiveErrors = (errors) => {
   };
 };
 
-export const requestTracks = () => (dispatch) => {
-  return TrackApiUtil.fetchTracks()
+export const requestTracks = (userId) => (dispatch) => {
+  return TrackApiUtil.fetchTracks(userId)
     .then((tracks) => dispatch(receiveTracks(tracks)))
     .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };

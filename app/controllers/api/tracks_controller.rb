@@ -22,7 +22,8 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-    @tracks = Track.all
+    @tracks = Track.where(user_id: params[:userId])
+  
     render :index
   end
 
