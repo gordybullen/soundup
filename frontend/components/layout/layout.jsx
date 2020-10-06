@@ -19,6 +19,7 @@ const Layout = () => {
           <Route exact path="/" component={Landing} />
           <ProtectedRoute exact path="/tracks/:trackId" component={TrackShow} />
           <ProtectedRoute exact path="/upload" component={TrackForm} />
+          {/* <ProtectedRoute exact path="/users/:username" component={UserShow} /> */}
           <Redirect to="/" />
           {/* <Route path="*" render={() => <Redirect to="/test" />} /> */}
         </Switch>

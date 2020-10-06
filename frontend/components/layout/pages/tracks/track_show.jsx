@@ -79,7 +79,7 @@ const TrackShow = (props) => {
               {track ? track.title : null}
             </div>
           </div>
-          <PlayButtonContainer trackId={track} />
+          <PlayButtonContainer trackId={track.id} />
         </div>
         <div className="track-show-right">
           <img src={track.imageUrl} className="track-image" />
