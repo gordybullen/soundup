@@ -23,7 +23,8 @@
       justify-content: space-evenly;
       // background-color: black;
       font-family: $font;
-      height: 50%;
+      height: 500px;
+      width: $max-desktop-width;
 
       h1 {
         font-size: 36px;
