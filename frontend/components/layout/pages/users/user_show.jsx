@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { requestUser, updateUser } from "../../../../actions/user_actions";
 import { requestTracks } from "../../../../actions/track_actions";
@@ -47,8 +48,9 @@ const UserShow = (props) => {
       </div>
       <div className="user-tracks">
         {tracks.map((track, idx) => (
-          <div className={`track-item-${idx}`}>
-            <div>{track.title}</div>
+          <div key={`track-item-${idx}`}>
+            {/* <div>{track.title}</div> */}
+            <Link to={`/tracks/${track.id}`}>{track.title}</Link>
           </div>
         ))}
       </div>

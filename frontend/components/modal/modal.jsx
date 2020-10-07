@@ -1,8 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import LoginFormContainer from '../session_form/login_form_container';
-import SignupFormContainer from '../session_form/signup_form_container';
+import LoginFormContainer from '../layout/pages/session_form/login_form_container';
+import SignupFormContainer from '../layout/pages/session_form/signup_form_container';
 import TrackEditForm from '../layout/pages/tracks/track_edit_form';
 import { MODALS } from '../../shared/constants';
 
