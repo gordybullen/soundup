@@ -57,12 +57,10 @@ const TrackShow = (props) => {
         props.requestTrackComments(props.match.params.trackId),
         props.requestUser(track.track.userId),
       ]).then((res) => {
-
         if (mounted && res) {
           setTrack(track.track);
           setComments(Object.values(res[0].comments));
-          setArtist(res[1].data);
-  
+          setArtist(res[1].user);
           // artist = useSelector((state) => state.entities.users[track.track.userId]);
           setHooksReady(true);
         }
