@@ -89,9 +89,9 @@ class AudioPlayer extends React.Component {
         <span id="duration">{this.formatTime(this.state.duration)}</span>
       </div>
     ) : null;
-
+    
     return (
-      <div className={currentTrack ? "audio-player-container" : "hidden"}>
+      <div className={currentTrack || playing ? "audio-player-container" : "hidden"}>
         <div className="audio-player">
           <audio
             id="audio"
