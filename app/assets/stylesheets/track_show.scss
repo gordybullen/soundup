@@ -145,12 +145,14 @@
   border-top-style: solid;
   border-top-width: 1px;
   padding-right: 50px;
+  margin-bottom: 20px;
 
   .comment-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    // margin-bottom: 20px;
 
     .comment-left {
       @extend %flex-center;
@@ -172,10 +174,33 @@
         color: gray;
       }
     }
+
+    .comment-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
     
     .comment-date {
       font-size: 14px;
       color: gray;
+      margin-right: 10px;
+    }
+
+    .comment-delete {
+      @extend %simple-btn;
+      height: 20px;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: gray;
+      margin-right: 10px;
+    }
+
+    .comment-delete:hover {
+      cursor: pointer;
+      background-color: lightgray;
     }
   }
 }

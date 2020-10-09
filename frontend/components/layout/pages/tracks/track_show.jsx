@@ -38,17 +38,17 @@ const mDTP = (dispatch) => {
     openModal: (modal) => dispatch(openModal(modal)),
     requestTrackComments: (trackId) => dispatch(requestTrackComments(trackId)),
     createComment: (comment) => dispatch(createComment(comment)),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
   };
 };
 
 const TrackShow = (props) => {
-  const { currentUser, openModal, commenter, stateComments } = props;
-  // const { track, artist, currentUser, openModal, comments, commenter } = props;
+  const { currentUser, openModal, commenter, stateComments, deleteComment } = props;
   const [hooksReady, setHooksReady] = useState(false);
   const [track, setTrack] = useState({});
   const [comments, setComments] = useState([]);
   const [artist, setArtist] = useState({});
-  
+
   useEffect(() => {
     let mounted = true;
 
@@ -156,6 +156,14 @@ const TrackShow = (props) => {
                     </div>
                   </div>
                   <div className="comment-right">
+                    {currentUser === comment.userId ? (
+                      <button
+                        className="comment-delete"
+                        onClick={() => deleteComment(comment.id)}
+                      >
+                        X
+                      </button>
+                    ) : null}
                     <span className="comment-date">
                       {createdAtToDate(comment.createdAt)}
                     </span>

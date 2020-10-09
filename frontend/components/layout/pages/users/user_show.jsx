@@ -19,7 +19,7 @@ const UserShow = (props) => {
   const [user, setUser] = useState({});
   const [tracks, setTracks] = useState({});
   let { userId } = useParams();
-  const currentUser = useSelector((state) => state.session.id)
+  const currentUser = useSelector((state) => state.session.id);
 
   useEffect(() => {
     let mounted = true;
@@ -55,13 +55,17 @@ const UserShow = (props) => {
         </div>
         <div className="user-menu">
           <div>
-            {currentUser === parseInt(userId ) ? 'PIZZA' : 'BANANA'}
+            {/* {currentUser === parseInt(userId ) ? 'PIZZA' : 'BANANA'} */}
           </div>
           <span>Tracks</span>
         </div>
         <div className="user-tracks">
           {Object.values(tracks).map((track, idx) => (
-            <UserTrackIndexItem track={track} key={`track-item-${idx}`} />
+            <UserTrackIndexItem
+              track={track}
+              // user={useSelector((state) => state.entities.users[track.userId])}
+              key={`track-item-${idx}`}
+            />
           ))}
         </div>
       </div>

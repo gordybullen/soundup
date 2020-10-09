@@ -47,6 +47,6 @@ export const createComment = (comment) => (dispatch) => {
 
 export const deleteComment = (commentId) => (dispatch) => {
   return CommentApiUtil.deleteComment(commentId)
-    .then(() => dispatchEvent(removeComment(commentId)))
+    .then(() => dispatch(removeComment(commentId)))
     .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };

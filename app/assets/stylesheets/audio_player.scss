@@ -27,6 +27,8 @@
 #audio,
 .hidden {
   display: none;
+  flex: 0;
+  height: auto;
 }
 
 .track-details,

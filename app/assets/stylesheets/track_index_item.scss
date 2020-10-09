@@ -1,15 +1,66 @@
+@import "variables";
+
 .user-tracks {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .track-item-container {
   display: flex;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  height: 180px;
   padding: 30px;
+  background: rgba(255, 192, 203, 0.4);
+  border-radius: 5%;
+  margin-bottom: 10px;
+
+  .track-item-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 2;
+  }
+
+  .track-item-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+
+    .track-createdAt {
+      color: gray;
+    }
+  }
 
   .track-image {
     width: 160px;
     height: 160px;
+    margin-right: 20px;
+  }
+
+  .track-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: $font;
+
+    .track-artist {
+      margin-bottom: 5px;
+      font-family: $font;
+      color: gray;
+    }
+
+    .track-title {
+      font-family: $font;
+      // text-decoration: none;
+      color: black;
+
+    }
   }
 }
