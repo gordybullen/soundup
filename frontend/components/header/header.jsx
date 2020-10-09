@@ -1,19 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import { openModal } from '../../actions/modal_actions';
-import { MODALS } from '../../shared/constants';
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/session_actions";
+import { openModal } from "../../actions/modal_actions";
+import { MODALS } from "../../shared/constants";
 
 const mSTP = ({ session, entities: { users } }) => {
   return {
-    currentUser: users[session.id]
+    currentUser: users[session.id],
   };
 };
 
-const mDTP = dispatch => ({
+const mDTP = (dispatch) => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: (modal) => dispatch(openModal(modal)),
 });
 
 // const TestComponent = ({ children }) => {
@@ -30,41 +30,45 @@ const mDTP = dispatch => ({
 const Header = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <>
-      <button 
+      <button
         onClick={() => openModal(MODALS.SIGN_IN)}
         className="nav-bar-button"
         id="nav-bar-btn-signin"
-      >Sign in
+      >
+        Sign in
       </button>
 
-      <button 
+      <button
         onClick={() => openModal(MODALS.CREATE_ACCOUNT)}
         className="nav-bar-button"
         id="nav-bar-btn-create"
-      >Create Account
+      >
+        Create Account
       </button>
     </>
   );
 
   const loggedInLinks = () => (
     <>
-      <Link 
-        className="nav-bar-link" 
-        id="nav-bar-btn-upload" 
-        to="/upload">Upload
+      <Link className="nav-bar-link" id="nav-bar-btn-upload" to="/upload">
+        Upload
       </Link>
 
       <Link
         className="nav-bar-link"
         id="nav-bar-btn-user"
-        to={`/users/${currentUser.id}`}>{currentUser.username}
+        to={`/users/${currentUser.id}`}
+      >
+        {currentUser.username}
       </Link>
 
       <Link
         className="nav-bar-link"
         id="nav-bar-btn-signout"
         onClick={logout}
-        to="/">Sign out
+        to="/"
+      >
+        Sign out
       </Link>
     </>
   );
@@ -84,24 +88,26 @@ const Header = ({ currentUser, logout, openModal }) => {
       </TestComponent> */}
       <div className="nav-bar-content">
         <div className="nav-bar-left">
-          <a href="#" className="nav-bar-icon">SoundUp</a>
+          <a href="#" className="nav-bar-icon">
+            SoundUp
+          </a>
           <div className="nav-bar-links">
-            <Link className="nav-bar-link" to="/">Home</Link>
+            <Link className="nav-bar-link" to="/">
+              Home
+            </Link>
           </div>
         </div>
         <div className="nav-bar-middle">
-          <input 
+          <input
             placeholder={placeholderText}
-            type="search" 
+            type="search"
             className="nav-bar-search-bar"
           />
         </div>
-        <div className="nav-bar-right">
-          {navBarRight}
-        </div>
+        <div className="nav-bar-right">{navBarRight}</div>
       </div>
     </nav>
-  )
+  );
 };
 
 export default connect(mSTP, mDTP)(Header);

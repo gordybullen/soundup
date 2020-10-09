@@ -1,20 +1,9 @@
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { requestUser, updateUser } from "../../../../actions/user_actions";
 import { requestTracks } from "../../../../actions/track_actions";
-
-const mSTP = (state, ownProps) => {
-  return {
-    user: state.entities.users[ownProps.match.params.userId],
-    tracks: Object.values(state.entities.tracks),
-    // tracks: Object.values(state.entities.tracks).forEach((track) => {
-    //   if (track.userId === ownProps.match.params.userId) {
-    //     tracks.push(track);
-    //   }
-    // }),
-  };
-};
+import UserTrackIndexItem from "./user_track_index_item";
 
 const mDTP = (dispatch) => {
   return {
@@ -25,37 +14,59 @@ const mDTP = (dispatch) => {
 };
 
 const UserShow = (props) => {
-  const { user, requestUser, updateUser, requestTracks, tracks } = props;
+  const { requestUser, updateUser, requestTracks } = props;
+  const [hooksReady, setHooksReady] = useState(false);
+  const [user, setUser] = useState({});
+  const [tracks, setTracks] = useState({});
+  let { userId } = useParams();
+  const currentUser = useSelector((state) => state.session.id)
 
   useEffect(() => {
-    requestUser(props.match.params.userId);
-    requestTracks(props.match.params.userId);
-  }, []);
+    let mounted = true;
 
-  return (
-    <div className="user-show-container">
-      <div className="user-show-content">
-        <div className="user-show-left">
-          <img
-            className="user-image"
-            src={user.imageUrl ? user.imageUrl : null}
-          />
-          <div className="username">{user.username}</div>
+    Promise.all([
+      requestUser(props.match.params.userId),
+      requestTracks(props.match.params.userId),
+    ]).then((res) => {
+      if (mounted && res) {
+        setHooksReady(true);
+        setUser(res[0].user);
+        let userTracks = {};
+        Object.values(res[1].tracks).forEach((track) => {
+          if (track.userId === parseInt(userId)) {
+            userTracks[track.id] = track;
+          }
+        });
+        setTracks(userTracks);
+      }
+    });
+  }, [userId]);
+
+  if (!hooksReady) {
+    return <div></div>;
+  } else {
+    return (
+      <div className="user-show-container">
+        <div className="user-show-content">
+          <div className="user-show-left">
+            <img className="user-image" src={user.imageUrl} />
+            <div className="username">{user.username}</div>
+          </div>
+        </div>
+        <div className="user-menu">
+          <div>
+            {currentUser === parseInt(userId ) ? 'PIZZA' : 'BANANA'}
+          </div>
+          <span>Tracks</span>
+        </div>
+        <div className="user-tracks">
+          {Object.values(tracks).map((track, idx) => (
+            <UserTrackIndexItem track={track} key={`track-item-${idx}`} />
+          ))}
         </div>
       </div>
-      <div className="user-menu">
-        <span>Tracks</span>
-      </div>
-      <div className="user-tracks">
-        {tracks.map((track, idx) => (
-          <div key={`track-item-${idx}`}>
-            {/* <div>{track.title}</div> */}
-            <Link to={`/tracks/${track.id}`}>{track.title}</Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
-export default connect(mSTP, mDTP)(UserShow);
+export default connect(null, mDTP)(UserShow);

@@ -1,0 +1,15 @@
+.user-tracks {
+  width: 100%;
+}
+
+.track-item-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 30px;
+
+  .track-image {
+    width: 160px;
+    height: 160px;
+  }
+}

@@ -9,16 +9,16 @@ class PlayButton extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const audioPlayer = document.getElementById("audio");
-
+    debugger
     if (
       this.props.playing &&
-      this.props.currentTrack === this.props.match.params.trackId
+      parseInt(this.props.currentTrack) === parseInt(this.props.match.params.trackId)
     ) {
       this.props.togglePlay();
       audioPlayer.pause();
     } else if (
       this.props.playing &&
-      this.props.currentTrack !== this.props.match.params.trackId
+      parseInt(this.props.currentTrack) !== parseInt(this.props.match.params.trackId)
     ) {
       this.props.togglePlay();
       audioPlayer.pause();
@@ -61,11 +61,16 @@ class PlayButton extends React.Component {
   }
 
   render() {
+    console.log("playing: ", this.props.playing);
+    console.log("currentTrack: ", this.props.currentTrack);
+    console.log("params: ", this.props.match.params.trackId);
+    // debugger
     let icon;
     if (
       this.props.playing &&
-      this.props.currentTrack === this.props.match.params.trackId
+      parseInt(this.props.currentTrack) === parseInt(this.props.match.params.trackId)
     ) {
+      // debugger
       icon = "pause";
     } else {
       icon = "play";
