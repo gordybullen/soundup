@@ -4,29 +4,33 @@ import { useParams } from "react-router-dom";
 import { requestUser, updateUser } from "../../../../actions/user_actions";
 import { requestTracks } from "../../../../actions/track_actions";
 import UserTrackIndexItem from "./user_track_index_item";
+import { openModal } from "../../../../actions/modal_actions";
+import { MODALS } from "../../../../shared/constants";
 
 const mDTP = (dispatch) => {
   return {
     requestUser: (userId) => dispatch(requestUser(userId)),
     updateUser: (user, userId) => dispatch(updateUser(user, userId)),
     requestTracks: (userId) => dispatch(requestTracks(userId)),
+    openModal: (modal) => dispatch(openModal(modal)),
   };
 };
 
 const UserShow = (props) => {
-  const { requestUser, updateUser, requestTracks } = props;
+  const { requestUser, updateUser, requestTracks, openModal } = props;
   const [hooksReady, setHooksReady] = useState(false);
   const [user, setUser] = useState({});
   const [tracks, setTracks] = useState({});
   let { userId } = useParams();
   const currentUser = useSelector((state) => state.session.id);
+  const stateUser = useSelector((state) => state.entities.users[userId]);
 
   useEffect(() => {
     let mounted = true;
 
     Promise.all([
-      requestUser(props.match.params.userId),
-      requestTracks(props.match.params.userId),
+      requestUser(userId),
+      requestTracks(userId),
     ]).then((res) => {
       if (mounted && res) {
         setHooksReady(true);
@@ -42,6 +46,24 @@ const UserShow = (props) => {
     });
   }, [userId]);
 
+  useEffect(() => {
+    setUser(stateUser);
+  }, [stateUser])
+
+  const userEdit = () => {
+    return currentUser === parseInt(userId) ? (
+      <div className="user-edit-container">
+        <button
+          className="user-edit-btn edit"
+          onClick={() => openModal(MODALS.EDIT_USER)}
+        >
+          Edit
+        </button>
+        {/* <button className="user-edit-btn delete">Delete</button> */}
+      </div>
+    ) : null;
+  };
+
   if (!hooksReady) {
     return <div></div>;
   } else {
@@ -53,10 +75,8 @@ const UserShow = (props) => {
             <div className="username">{user.username}</div>
           </div>
         </div>
+        {userEdit()}
         <div className="user-menu">
-          <div>
-            {/* {currentUser === parseInt(userId ) ? 'PIZZA' : 'BANANA'} */}
-          </div>
           <span>Tracks</span>
         </div>
         <div className="user-tracks">

@@ -24,19 +24,24 @@ const mDTP = (dispatch) => {
 
 const TrackEditForm = (props) => {
   const { track, errors } = props;
-  const title = useFormInput(track.title);
-  const genre = useFormInput(track.genre);
+  const title = useFormInput(track.title ? track.title : "");
+  const genre = useFormInput(track.genre ? track.genre : "");
   const description = useFormInput(track.description ? track.description : "");
-  const [imageUrl, setImageUrl] = useState(track.imageUrl);
+  const [imageUrl, setImageUrl] = useState(
+    track.imageUrl ? track.imageUrl : ""
+  );
   const [imageFile, setImageFile] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("track[title]", title.value);
-    formData.append("track[genre]", genre.value);
-    formData.append("track[description]", description.value);
+    formData.append("track[title]", title.value ? title.value : "");
+    formData.append("track[genre]", genre.value ? genre.value : "");
+    formData.append(
+      "track[description]",
+      description.value ? description.value : ""
+    );
     // formData.append('track[user_id]', this.state.userId);
 
     // if (this.state.audioFile) {
@@ -49,7 +54,7 @@ const TrackEditForm = (props) => {
 
     props.updateTrack(formData, track.id).then((updatedTrack) => {
       props.closeModal();
-      props.history.push(`/tracks/${updatedTrack.track.id}`);
+      // props.history.push(`/tracks/${updatedTrack.track.id}`);
     });
   };
 

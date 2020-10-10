@@ -12,6 +12,10 @@ import {
   deleteComment,
 } from "../../../../actions/comment_actions";
 import CommentForm from "./comment_form";
+import Waveform from "waveform-react";
+import load from "audio-loader";
+import path from "path";
+import aws from "aws-sdk";
 
 const mSTP = (state, ownProps) => {
   // const track = state.entities.tracks[ownProps.match.params.trackId];
@@ -19,6 +23,7 @@ const mSTP = (state, ownProps) => {
   const currentUser = state.session.id;
   const commenter = currentUser ? state.entities.users[currentUser] : null;
   const stateComments = Object.values(state.entities.comments);
+  const stateTrack = state.entities.tracks[ownProps.match.params.trackId];
 
   return {
     // track: track,
@@ -27,6 +32,7 @@ const mSTP = (state, ownProps) => {
     // comments: comments,
     commenter: commenter,
     stateComments,
+    stateTrack,
   };
 };
 
@@ -43,11 +49,24 @@ const mDTP = (dispatch) => {
 };
 
 const TrackShow = (props) => {
-  const { currentUser, openModal, commenter, stateComments, deleteComment } = props;
+  const {
+    currentUser,
+    openModal,
+    commenter,
+    stateComments,
+    deleteComment,
+    stateTrack,
+  } = props;
   const [hooksReady, setHooksReady] = useState(false);
   const [track, setTrack] = useState({});
   const [comments, setComments] = useState([]);
   const [artist, setArtist] = useState({});
+  const [buffer, setBuffer] = useState(null);
+  // const s3 = new aws.S3();
+  // const getParams = {
+  //   Bucket: "soundup-dev",
+  //   Key: track.url,
+  // };
 
   useEffect(() => {
     let mounted = true;
@@ -71,6 +90,39 @@ const TrackShow = (props) => {
   useEffect(() => {
     setComments(Object.values(stateComments));
   }, [stateComments]);
+
+  useEffect(() => {
+    setTrack(stateTrack);
+  }, [stateTrack]);
+
+  // useEffect(() => {
+  //   if (track.url) {
+  //     fetch(track.url, {
+  //       mode: "no-cors",
+  //       headers: {
+  //         "Access-Control-Allow-Origin": "*",
+  //       },
+  //     })
+  //       .then((res) => {
+  //         res.arrayBuffer();
+  //       })
+  //       .then((b) => {
+  //         setBuffer(b);
+  //       });
+  //   }
+  // }, [track.url]);
+
+  // useEffect(() => {
+  //   s3.getObject(getParams, (err, data) => {
+  //     // Handle any error and exit
+  //     if (err) return err;
+
+  //     // No error happened
+  //     // Convert Body from a Buffer to a String
+
+  //     // let objectData = data.Body.toString("utf-8"); // Use the encoding necessary
+  //   });
+  // }, [track.url]);
 
   const trackEdit = () => {
     return track && currentUser === track.userId ? (
@@ -101,6 +153,19 @@ const TrackShow = (props) => {
     return (
       <div className="track-show">
         <div className="track-show-container">
+          {buffer && (
+            <Waveform // Audio buffer
+              buffer={buffer}
+              // waveform height
+              height={150}
+              markerStyle={{
+                // Position marker color
+                color: "#fff",
+                // Position marker width (in pixels)
+                width: 4,
+              }}
+            />
+          )}
           <div className="track-show-left">
             <div className="track-info-container">
               <Link
@@ -109,7 +174,6 @@ const TrackShow = (props) => {
               >
                 {artist.username}
               </Link>
-              {/* <div className="track-info track-artist">{artist.username}</div> */}
               <br />
               <div className="track-info track-title">
                 {track ? track.title : null}
@@ -134,7 +198,7 @@ const TrackShow = (props) => {
           </div>
           <div className="track-lower-right">
             <div className="lower-right-top">
-              <div className="track-description">{track.description}</div>
+              <div className="track-description">{track.description ? track.description : ""}</div>
               <div className="comment-count-container">
                 <i className="far fa-comment-alt"></i>
                 <span className="comment-count">

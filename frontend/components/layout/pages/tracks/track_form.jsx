@@ -20,13 +20,14 @@ class TrackForm extends React.Component {
     super(props);
 
     this.state = {
-      userId: this.props.currentUser.id,
+      userId: props.currentUser.id,
       title: "",
       genre: "",
       descrption: "",
       audioFile: null,
       imageFile: null,
       imageUrl: null,
+      submitted: false,
     };
 
     this.handleAudioFile = this.handleAudioFile.bind(this);
@@ -36,24 +37,27 @@ class TrackForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    
-    const formData = new FormData();
-    formData.append("track[user_id]", this.state.userId);
-    formData.append("track[title]", this.state.title);
-    formData.append("track[genre]", this.state.genre);
-    formData.append("track[description]", this.state.description);
 
-    if (this.state.audioFile) {
-      formData.append("track[audio_file]", this.state.audioFile);
+    if (!this.state.submitted) {
+      this.setState({ submitted: true });
+      const formData = new FormData();
+      formData.append("track[user_id]", this.state.userId);
+      formData.append("track[title]", this.state.title);
+      formData.append("track[genre]", this.state.genre);
+      formData.append("track[description]", this.state.description);
+
+      if (this.state.audioFile) {
+        formData.append("track[audio_file]", this.state.audioFile);
+      }
+
+      if (this.state.imageFile) {
+        formData.append("track[image_file]", this.state.imageFile);
+      }
+
+      this.props.createTrack(formData).then((newTrack) => {
+        this.props.history.push(`/tracks/${newTrack.track.id}`);
+      }); // for some reason the object returned by createTrack is an action and not the track itself...
     }
-
-    if (this.state.imageFile) {
-      formData.append("track[image_file]", this.state.imageFile);
-    }
-
-    this.props.createTrack(formData).then((newTrack) => {
-      this.props.history.push(`/tracks/${newTrack.track.id}`);
-    }); // for some reason the object returned by createTrack is an action and not the track itself...
     // .then(newTrack => this.props.history.push("/"));
   }
 
@@ -155,7 +159,12 @@ class TrackForm extends React.Component {
               </div>
             </div>
           </div>
-          <button className="basic-info-form-submit">Save</button>
+          <button
+            disabled={this.state.submitted}
+            className="basic-info-form-submit"
+          >
+            {!this.state.submitted ? "Save" : "Loading"}
+          </button>
         </div>
       </form>
     );

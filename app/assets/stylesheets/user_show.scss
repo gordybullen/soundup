@@ -38,6 +38,19 @@
     }
   }
 
+  .user-edit-container {
+    width: 90%;
+    padding: 5px;
+    border-bottom-color: #e5e5e5;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+
+    .user-edit-btn {
+      @extend %simple-btn;
+      // background-color: $orange;
+    }
+  }
+
   .user-menu {
     width: 100%;
     margin-top: 25px;
