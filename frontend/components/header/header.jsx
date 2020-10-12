@@ -16,17 +16,6 @@ const mDTP = (dispatch) => ({
   openModal: (modal) => dispatch(openModal(modal)),
 });
 
-// const TestComponent = ({ children }) => {
-//   return (
-//     <div style={{color: 'white'}}>
-//       I have children
-//       <div>
-//         {children}
-//       </div>
-//     </div>
-//   )
-// }
-
 const Header = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <>

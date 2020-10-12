@@ -1,7 +1,7 @@
 @import "variables";
 
 .audio-player-container {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   height: 48px;
@@ -9,7 +9,7 @@
   left: 0;
   background-color: #f2f2f2;
   border-top: 1px solid #cecece;
-  position: fixed;
+  position: sticky;
 }
 
 .audio-player {

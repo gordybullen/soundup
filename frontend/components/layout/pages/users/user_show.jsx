@@ -47,7 +47,7 @@ const UserShow = (props) => {
   }, [userId]);
 
   useEffect(() => {
-    setUser(stateUser);
+    stateUser ? setUser(stateUser) : null;
   }, [stateUser])
 
   const userEdit = () => {

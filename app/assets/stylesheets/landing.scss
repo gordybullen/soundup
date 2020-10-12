@@ -66,5 +66,72 @@
         }
       }
     }
+
+    .trending-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: $max-desktop-width;
+      height: 500px;
+
+      .trending-message {
+        color: black;
+        font-size: 24px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      .row-1 {
+        margin-bottom: 40px;
+      }
+
+      img {
+        width: 160px;
+        height: 160px;
+        margin-right: 40px;
+      }
+
+      img:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.bottom-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  background-color: $gray;
+  margin-top: 40px;
+  height: 360px;
+  width: $max-desktop-width;
+
+  .message-1 {
+    font-size: 30px;
+  }
+
+  .create-account-btn {
+    @extend %simple-btn;
+    background-color: $orange;
+    color: white;
+    height: 46px;
+    width: 200px;
+    font-size: 18px;
+  }
+
+  .message-3 {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .sign-in-btn {
+    @extend %simple-btn;
+    height: 40px;
+    width: 80px;
+    font-size: 16px;
   }
 }
