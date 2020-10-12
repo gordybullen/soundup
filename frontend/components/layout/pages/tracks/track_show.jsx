@@ -56,6 +56,7 @@ const TrackShow = (props) => {
     stateComments,
     deleteComment,
     stateTrack,
+    deleteTrack,
   } = props;
   const [hooksReady, setHooksReady] = useState(false);
   const [track, setTrack] = useState({});
@@ -95,6 +96,12 @@ const TrackShow = (props) => {
     setTrack(stateTrack);
   }, [stateTrack]);
 
+  const handleDelete = () => {
+    deleteTrack(track.id).then(() =>
+      props.history.push(`/users/${track.userId}`)
+    );
+  };
+
   // useEffect(() => {
   //   if (track.url) {
   //     fetch(track.url, {
@@ -133,7 +140,9 @@ const TrackShow = (props) => {
         >
           Edit
         </button>
-        <button className="track-edit-btn delete">Delete</button>
+        <button onClick={handleDelete} className="track-edit-btn delete">
+          Delete
+        </button>
       </div>
     ) : null;
   };
@@ -198,7 +207,9 @@ const TrackShow = (props) => {
           </div>
           <div className="track-lower-right">
             <div className="lower-right-top">
-              <div className="track-description">{track.description ? track.description : ""}</div>
+              <div className="track-description">
+                {track.description === "undefined" ? "" : track.description}
+              </div>
               <div className="comment-count-container">
                 <i className="far fa-comment-alt"></i>
                 <span className="comment-count">

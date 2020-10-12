@@ -26,6 +26,13 @@ const receiveErrors = (errors) => {
   };
 };
 
+const removeTrack = (trackId) => {
+  return {
+    type: REMOVE_TRACK,
+    trackId,
+  };
+};
+
 export const requestTracks = (userId) => (dispatch) => {
   return TrackApiUtil.fetchTracks(userId)
     .then((tracks) => dispatch(receiveTracks(tracks)))

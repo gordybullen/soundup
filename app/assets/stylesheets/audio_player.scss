@@ -39,6 +39,12 @@
   padding: 7px 15px;
 }
 
+.track-details {
+  .track-info {
+    min-width: 100%;
+  }
+}
+
 .play-btn,
 .pause-btn {
   display: flex;

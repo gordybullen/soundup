@@ -61,8 +61,8 @@ class AudioPlayer extends React.Component {
     const artist = currentTrack ? this.props.artist : null;
     const trackInfo = currentTrack ? (
       <div className="track-info">
-        <Link id="player-artist" to="/">
-          {artist}
+        <Link id="player-artist" to={`/users/${artist.id}`}>
+          {artist.username}
         </Link>
         <Link id="player-title" to={`/tracks/${currentTrack.id}`}>
           {currentTrack.title}

@@ -8,7 +8,7 @@ const mSTP = (state) => {
     ? state.entities.tracks[trackId]
     : null;
   const artist = currentTrack
-    ? state.entities.users[currentTrack.userId].username
+    ? state.entities.users[currentTrack.userId]
     : null;
   return {
     playing: state.ui.audioPlayer.playing,
