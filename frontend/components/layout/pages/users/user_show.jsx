@@ -11,7 +11,7 @@ const mDTP = (dispatch) => {
   return {
     requestUser: (userId) => dispatch(requestUser(userId)),
     updateUser: (user, userId) => dispatch(updateUser(user, userId)),
-    requestTracks: (userId) => dispatch(requestTracks(userId)),
+    requestTracks: (userId) => dispatch(requestTracks(userId, all)),
     openModal: (modal) => dispatch(openModal(modal)),
   };
 };

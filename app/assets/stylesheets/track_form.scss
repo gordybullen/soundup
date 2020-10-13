@@ -7,7 +7,9 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  // background-color: #f2f2f2;
+  background-image: url("https://soundup-seeds.s3-us-west-1.amazonaws.com/upload_background.jpeg");
+  background-size: cover;
+  background-position: center;
 
   .track-form-content, .user-form-content {
     display: flex;

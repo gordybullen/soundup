@@ -56,9 +56,8 @@ class TrackForm extends React.Component {
 
       this.props.createTrack(formData).then((newTrack) => {
         this.props.history.push(`/tracks/${newTrack.track.id}`);
-      }); // for some reason the object returned by createTrack is an action and not the track itself...
+      });
     }
-    // .then(newTrack => this.props.history.push("/"));
   }
 
   update(field) {
@@ -163,7 +162,7 @@ class TrackForm extends React.Component {
             disabled={this.state.submitted}
             className="basic-info-form-submit"
           >
-            {!this.state.submitted ? "Save" : "Loading"}
+            {!this.state.submitted ? "Save" : "Loading..."}
           </button>
         </div>
       </form>

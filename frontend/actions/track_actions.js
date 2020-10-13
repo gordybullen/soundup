@@ -33,8 +33,8 @@ const removeTrack = (trackId) => {
   };
 };
 
-export const requestTracks = (userId) => (dispatch) => {
-  return TrackApiUtil.fetchTracks(userId)
+export const requestTracks = (userId, all) => (dispatch) => {
+  return TrackApiUtil.fetchTracks(userId, all)
     .then((tracks) => dispatch(receiveTracks(tracks)))
     .fail((res) => dispatch(receiveErrors(res.responseJSON)));
 };

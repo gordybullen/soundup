@@ -22,7 +22,11 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-    @tracks = Track.where(user_id: params[:userId])
+    if params[:all]
+      @tracks = Track.all
+    else
+      @tracks = Track.where(user_id: params[:userId])
+    end
   
     render :index
   end
@@ -47,6 +51,6 @@ class Api::TracksController < ApplicationController
   private 
 
   def track_params
-    params.require(:track).permit(:user_id, :title, :genre, :description, :audio_file, :image_file)
+    params.require(:track).permit(:user_id, :title, :genre, :description, :audio_file, :image_file, :all)
   end
 end
