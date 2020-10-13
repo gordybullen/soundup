@@ -20,6 +20,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+
+    render :index
+  end
+
   def update
     @user = User.find_by(id: params[:id])
 

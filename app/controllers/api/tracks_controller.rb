@@ -22,7 +22,7 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-    if params[:all]
+    if params[:all] == "true"
       @tracks = Track.all
     else
       @tracks = Track.where(user_id: params[:userId])

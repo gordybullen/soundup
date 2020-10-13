@@ -1,17 +1,23 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, useStore } from "react-redux";
+import { Link } from "react-router-dom";
 import { openModal } from "../../../actions/modal_actions";
 import { requestTracks } from "../../../actions/track_actions";
+import { requestUsers } from "../../../actions/user_actions";
 import { MODALS } from "../../../shared/constants";
 
 const Landing = () => {
   const currentUser = useSelector((state) => state.session.id);
   const tracks = Object.values(useSelector((state) => state.entities.tracks));
+  const users = useSelector((state) => state.entities.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(requestTracks(null, true));
-  }, []);
+    if (currentUser) {
+      dispatch(requestTracks(null, true));
+      dispatch(requestUsers());
+    }
+  }, [currentUser]);
 
   const welcome = () => {
     return (
@@ -112,17 +118,75 @@ const Landing = () => {
   };
 
   const loggedIn = () => {
-    return (
-      <div className="logged-in-section">
-        <span>SoundUp: Trending</span>
-        <span>Up-and-coming tracks on SoundUp</span>
-        {tracks.slice(0, 3).map((track, idx) => (
-          <div key={`track-${idx}`}>
-            <img className="landing-track" src={track.imageUrl} />
+    if (currentUser && users) {
+      return (
+        <div className="logged-in-section-container">
+          <div className="logged-in-section">
+            <div className="title">
+              <div className="title-1">SoundUp: Trending</div>
+              <div className="title-2">Up-and-coming tracks on SoundUp</div>
+            </div>
+            <div className="landing-tracks">
+              {tracks.slice(0, 4).map((track, idx) => (
+                <Link
+                  className="track-item"
+                  key={`track-${idx}`}
+                  to={`/tracks/${track.id}`}
+                >
+                  <img className="landing-track-img" src={track.imageUrl} />
+                  <div className="track-artist">
+                    {users[track.userId].username}
+                  </div>
+                  <div className="track-title">{track.title}</div>
+                </Link>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    );
+          <div className="logged-in-section">
+            <div className="title">
+              <div className="title-1">Dance/Electronic</div>
+              <div className="title-2">Stay at home dance party</div>
+            </div>
+            <div className="landing-tracks">
+              {tracks.slice(4, 8).map((track, idx) => (
+                <Link
+                  className="track-item"
+                  key={`track-${idx}`}
+                  to={`/tracks/${track.id}`}
+                >
+                  <img className="landing-track-img" src={track.imageUrl} />
+                  <div className="track-artist">
+                    {users[track.userId].username}
+                  </div>
+                  <div className="track-title">{track.title}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="logged-in-section">
+            <div className="title">
+              <div className="title-1">In the feels</div>
+              <div className="title-2">Can you feel it?</div>
+            </div>
+            <div className="landing-tracks">
+              {tracks.slice(10, 14).map((track, idx) => (
+                <Link
+                  className="track-item"
+                  key={`track-${idx}`}
+                  to={`/tracks/${track.id}`}
+                >
+                  <img className="landing-track-img" src={track.imageUrl} />
+                  <div className="track-artist">
+                    {users[track.userId].username}
+                  </div>
+                  <div className="track-title">{track.title}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
   };
 
   return (

@@ -11,7 +11,7 @@ const mDTP = (dispatch) => {
   return {
     requestUser: (userId) => dispatch(requestUser(userId)),
     updateUser: (user, userId) => dispatch(updateUser(user, userId)),
-    requestTracks: (userId) => dispatch(requestTracks(userId, all)),
+    requestTracks: (userId, all) => dispatch(requestTracks(userId, all)),
     openModal: (modal) => dispatch(openModal(modal)),
   };
 };
@@ -28,27 +28,26 @@ const UserShow = (props) => {
   useEffect(() => {
     let mounted = true;
 
-    Promise.all([
-      requestUser(userId),
-      requestTracks(userId),
-    ]).then((res) => {
-      if (mounted && res) {
-        setHooksReady(true);
-        setUser(res[0].user);
-        let userTracks = {};
-        Object.values(res[1].tracks).forEach((track) => {
-          if (track.userId === parseInt(userId)) {
-            userTracks[track.id] = track;
-          }
-        });
-        setTracks(userTracks);
+    Promise.all([requestUser(userId), requestTracks(userId, false)]).then(
+      (res) => {
+        if (mounted && res) {
+          setHooksReady(true);
+          setUser(res[0].user);
+          let userTracks = {};
+          Object.values(res[1].tracks).forEach((track) => {
+            if (track.userId === parseInt(userId)) {
+              userTracks[track.id] = track;
+            }
+          });
+          setTracks(userTracks);
+        }
       }
-    });
+    );
   }, [userId]);
 
   useEffect(() => {
     stateUser ? setUser(stateUser) : null;
-  }, [stateUser])
+  }, [stateUser]);
 
   const userEdit = () => {
     return currentUser === parseInt(userId) ? (
@@ -80,13 +79,16 @@ const UserShow = (props) => {
           <span>Tracks</span>
         </div>
         <div className="user-tracks">
-          {Object.values(tracks).map((track, idx) => (
-            <UserTrackIndexItem
-              track={track}
-              // user={useSelector((state) => state.entities.users[track.userId])}
-              key={`track-item-${idx}`}
-            />
-          ))}
+          {Object.keys(tracks).length === 0 ? (
+            <div>No tracks yet... Try uploading for free!</div>
+          ) : (
+            Object.values(tracks).map((track, idx) => (
+              <UserTrackIndexItem
+                track={track}
+                key={`track-item-${idx}`}
+              />
+            ))
+          )}
         </div>
       </div>
     );

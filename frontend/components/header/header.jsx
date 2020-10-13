@@ -44,10 +44,11 @@ const Header = ({ currentUser, logout, openModal }) => {
       </Link>
 
       <Link
-        className="nav-bar-link"
+        className="nav-bar-link-user"
         id="nav-bar-btn-user"
         to={`/users/${currentUser.id}`}
       >
+        <img className="nav-bar-img" src={currentUser.imageUrl}/>
         {currentUser.username}
       </Link>
 
