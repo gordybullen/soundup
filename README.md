@@ -1,4 +1,4 @@
-# [SoundUp](demolink)
+# [SoundUp][demolink]
 
 ![alt text][home]
 
