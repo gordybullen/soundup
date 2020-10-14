@@ -1,1 +1,1 @@
-# SoundUp (https://soundup-us.herokuapp.com/#/)
+# [SoundUp](https://soundup-us.herokuapp.com/#/)
