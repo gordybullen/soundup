@@ -29,7 +29,7 @@ The home page welcomes users that are not signed in and provides them with infor
 ![alt text][home_gif]
 
 ## User Authentication
-**Users can create a new account, sign it, edit account information, and sign out.
+**Users can create a new account, sign it, edit account information, and sign out.**
 * A demo user account is available to sign in with and try out all the features.
 * The user form will display errors if any authentication criteria is not met.
 
