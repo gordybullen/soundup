@@ -23,6 +23,20 @@ SoundUp is a clone of [SoundCloud](soundcloud), a music and audio platform that 
 * Heroku
 * AWS
 
+## Home Page
+The home page welcomes users that are not signed in and provides them with information about that site, as well as links to create a new account or sign in. Once signed it, users can discover new music and creators from the home page.
+
+![alt text][home_gif]
+
+## User Authentication
+**Users can create a new account, sign it, edit account information, and sign out.
+* A demo user account is available to sign in with and try out all the features.
+* The user form will display errors if any authentication criteria is not met.
+
+![alt text][user_auth]
+
 [soundup]: https://soundup-us.herokuapp.com/#/
 [soundcloud]: https://soundcloud.com/
 [home]: https://soundup-seeds.s3-us-west-1.amazonaws.com/soundup_home.png
+[home_gif]: https://soundup-seeds.s3-us-west-1.amazonaws.com/home_page.gif
+[user_auth]: https://soundup-seeds.s3-us-west-1.amazonaws.com/user_auth.gif
