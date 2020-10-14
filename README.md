@@ -1,4 +1,4 @@
-# [SoundUp](soundup)
+# [SoundUp](demolink)
 
 ![alt text][home]
 
@@ -86,7 +86,7 @@ Users can create and delete their own comments on any track they choose.
 - [ ] Waveforms
   * Track show pages will display the audio files wavform.
 
-[soundup]: https://soundup-us.herokuapp.com
+[demolink]: https://soundup-us.herokuapp.com
 [soundcloud]: https://soundcloud.com/
 [home]: https://soundup-seeds.s3-us-west-1.amazonaws.com/soundup_home.png
 [home_gif]: https://soundup-seeds.s3-us-west-1.amazonaws.com/home_page.gif
