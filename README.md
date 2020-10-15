@@ -1,9 +1,9 @@
-# <a href="https://soundup-us.herokuapp.com" target="_blank">SoundUp</a>
+# [SoundUp][soundup]
 
 ![alt text][home]
 
 ## Introduction
-SoundUp is a clone of <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>, a music and audio platform that lets people discover and enjoy a wide selection of music from a diverse community of creators.
+SoundUp is a clone of [SoundCloud](soundcloud), a music and audio platform that lets people discover and enjoy a wide selection of music from a diverse community of creators.
 
 ## Technologies
 ### Frontend
