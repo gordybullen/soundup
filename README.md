@@ -1,9 +1,9 @@
-# [SoundUp][demolink]
+# <a href="https://soundup-us.herokuapp.com" target="_blank">SoundUp</a>
 
 ![alt text][home]
 
 ## Introduction
-SoundUp is a clone of [SoundCloud](soundcloud), a music and audio platform that lets people discover and enjoy a wide selection of music from a diverse community of creators.
+SoundUp is a clone of <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>, a music and audio platform that lets people discover and enjoy a wide selection of music from a diverse community of creators.
 
 ## Technologies
 ### Frontend
@@ -86,7 +86,7 @@ Users can create and delete their own comments on any track they choose.
 - [ ] Waveforms
   * Track show pages will display the audio files waveform.
 
-[demolink]: https://soundup-us.herokuapp.com
+[soundup]: https://soundup-us.herokuapp.com
 [soundcloud]: https://soundcloud.com/
 [home]: https://soundup-seeds.s3-us-west-1.amazonaws.com/soundup_home.png
 [home_gif]: https://soundup-seeds.s3-us-west-1.amazonaws.com/home_page.gif
