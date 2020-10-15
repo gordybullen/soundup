@@ -79,12 +79,12 @@ Users can create and delete their own comments on any track they choose.
 # Next Steps
 
 - [ ] Likes/Follows
-  * Users will be able to like tracks and follow other creators on SoundUp.
+  * Users will be able to like tracks and follow other users on SoundUp.
   * Users will have a feed to see liked tracks and the newest from their followed artists.
 - [ ] Playlists
   * Users will be able to create playlists with any tracks on SoundUp.
 - [ ] Waveforms
-  * Track show pages will display the audio files wavform.
+  * Track show pages will display the audio files waveform.
 
 [demolink]: https://soundup-us.herokuapp.com
 [soundcloud]: https://soundcloud.com/
