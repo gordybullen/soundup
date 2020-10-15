@@ -90,7 +90,7 @@ Users can create and delete their own comments on any track they choose.
 [soundcloud]: https://soundcloud.com/
 [home]: https://soundup-seeds.s3-us-west-1.amazonaws.com/soundup_home.png
 [home_gif]: https://soundup-seeds.s3-us-west-1.amazonaws.com/home_page.gif
-[user_auth]: https://soundup-seeds.s3-us-west-1.amazonaws.com/user_auth.gif
+
 [upload]: https://soundup-seeds.s3-us-west-1.amazonaws.com/upload.gif
 [audio_player]: https://soundup-seeds.s3-us-west-1.amazonaws.com/audio_player.png
 [comments]: https://soundup-seeds.s3-us-west-1.amazonaws.com/comments.gif
