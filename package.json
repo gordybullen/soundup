@@ -8,7 +8,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/runtime": "^7.11.2",
     "audio-loader": "^1.0.3",
-    "aws-sdk": "^2.771.0",
+    "aws-sdk": "^2.814.0",
     "babel-loader": "^8.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
