@@ -13,9 +13,6 @@ import {
 } from "../../../../actions/comment_actions";
 import CommentForm from "./comment_form";
 import Waveform from "waveform-react";
-import load from "audio-loader";
-import path from "path";
-import aws from "aws-sdk";
 
 const mSTP = (state, ownProps) => {
   // const track = state.entities.tracks[ownProps.match.params.trackId];

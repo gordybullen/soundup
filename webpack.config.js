@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: "none",
   context: __dirname,
   entry: './frontend/soundup.jsx',
   output: {
@@ -14,7 +15,7 @@ module.exports = {
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
-          query: {
+          options: {
             presets: ['@babel/env', '@babel/react']
           }
         },
@@ -23,6 +24,6 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js",".jsx",".*"]
   }
 };
